@@ -60,7 +60,7 @@ class _RecipesScreenState extends State<SearchScreen> {
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: SearchBar(),
+                          // child: SearchBar(),
                           //===============
                         ),
                       ),
