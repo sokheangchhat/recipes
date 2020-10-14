@@ -1,64 +1,73 @@
 
 import 'package:flutter/material.dart';
+import 'package:recipes/bloc/recipes_view_bloc.dart';
+import 'package:recipes/widgets/recipe_card.dart';
 
 
-//class LoginState extends State<Login> {
+class RecipesDetial extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  _RecipesDetialState createState() => _RecipesDetialState();
+}
+class _RecipesDetialState extends State<RecipesDetial> {
+  RecipesViewBloc bloc = new RecipesViewBloc();
+    @override
+    void initState() {
+      super.initState();
+  
+    }
+  
+    @override
+    void dispose() {
+      super.dispose();
+      bloc.dispose();
+    }
+  
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        backgroundColor: Color.fromARGB( 255,37, 52, 64),
         appBar: AppBar(
-            title: Text("SMARTID", textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'Open Sans', fontWeight: FontWeight.bold)),
-            leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/images/appicon.png",
-                  scale: 8.0,
-                )
-            )
+          backgroundColor: Color.fromARGB( 255,37, 52, 64),
+          centerTitle: true,
+            title: Text('Recipes Detial'),
         ),
-        backgroundColor: Colors.transparent,
-        body: Stack(
+        body: Column(
           children: <Widget>[
-            Container(
-                alignment: Alignment(0, -0.5),
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/background.jpg'),
-                      fit: BoxFit.cover,
-                    )
-                )
+            Column(
+              children: <Widget>[
+                
+              ],
+              
             ),
-
-            Positioned(
-                width: MediaQuery.of(context).size.width,
-                top: MediaQuery.of(context).size.width * 0.30,//TRY TO CHANGE THIS **0.30** value to achieve your goal 
-                child: Container(
-                  margin: EdgeInsets.all(16.0),
-                  child:Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset('assets/images/appicon.png', scale: 2.5),
-                        SizedBox(height: 20,),
-                        Text("SMARTID", style: TextStyle(
-                            fontSize: 30, color: Colors.white,fontFamily: 'Open Sans',
-                            fontWeight: FontWeight.bold))
-                      ]
-                  ),
-                ))
+             _itemGrid(),
           ],
-        )
+        ),
+        
+      );   
+    } 
+  
+    RecipesGridCard _itemCardGrid() {
+    return RecipesGridCard();
+  }
+
+   Widget _itemGrid() {
+    return Expanded(
+      child: Column(
+        
+      ),
+      // child: GridView.count(
+      //   padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
+      //   crossAxisSpacing: 10,
+      //   mainAxisSpacing: 10,
+      //   crossAxisCount: 2,
+      //   children: List.generate(100, (index) {
+      //     // return _alertDialog(context, index);
+      //     return _itemCardGrid();
+      //   }),
+      // ),
     );
   }
 
+}
 
-  //}
+
