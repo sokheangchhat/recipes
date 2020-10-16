@@ -6,6 +6,7 @@ import 'package:recipes/models/food.dart';
 import 'package:recipes/widgets/recipe_card.dart';
 
 import 'search_screen.dart';
+import 'search_screen.dart';
 
 
 
@@ -84,11 +85,8 @@ class _RecipesScreenState extends State<RecipesScreen> {
               else {
                 return _itemGrid();
               }
-              
             },
-            
           ),
-          
         ],
       ),
       drawer: Drawer(
@@ -181,6 +179,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
       ),
     );
   }
+  
 
   RecipesGridCard _itemCardGrid() {
     return RecipesGridCard();
@@ -196,7 +195,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: 2,
-        children: List.generate(100, (index) {
+        children: List.generate(4, (index) {
           // return _alertDialog(context, index);
           return _itemCardGrid();
         }),
@@ -205,11 +204,11 @@ class _RecipesScreenState extends State<RecipesScreen> {
   }
 
   Widget _itemList(){
-    final List<String> sol=<String> ['a','a','a','a'];
+    final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: sol.length,
+        itemCount: item.length,
         itemBuilder: (BuildContext context, index) {
           return _itemCardList();
         }
@@ -219,46 +218,45 @@ class _RecipesScreenState extends State<RecipesScreen> {
 }
 
 
-
   
   
 
 
+//===========
 
-
-// class RecipesItemSearch extends SearchDelegate<ListView> {
-//   @override
-//   List<Widget> buildActions(BuildContext context) {
-//       return [IconButton(
-//         icon: Icon(Icons.clear), 
-//         onPressed: (){})];
-//     }
+class RecipesItemSearch extends SearchDelegate<ListView> {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+      return [IconButton(
+        icon: Icon(Icons.clear), 
+        onPressed: (){})];
+    }
   
-//     @override
-//     Widget buildLeading(BuildContext context) {
-//       return IconButton(
-//         icon: Icon(Icons.arrow_back), 
-//         onPressed: (){ 
-//         });
-//     }
+    @override
+    Widget buildLeading(BuildContext context) {
+      return IconButton(
+        icon: Icon(Icons.arrow_back), 
+        onPressed: (){ 
+        });
+    }
   
-//     @override
-//     Widget buildResults(BuildContext context) {
+    @override
+    Widget buildResults(BuildContext context) {
 
-//       throw UnimplementedError();
-//     }
+      throw UnimplementedError();
+    }
     
-//     @override
-//     Widget buildSuggestions(BuildContext context) {
-//       final lst = loadRecipeItem();
-//       return ListView.builder(
-//         itemCount: ['a','b','c'].length,
-//         itemBuilder: (context,index){
-//           final Food listitem = lst[index];
-//           return ListTile(
-//             title: Text(listitem.title),);
-//         },
-//       );
-//   }
+    @override
+    Widget buildSuggestions(BuildContext context) {
+      final lst = loadRecipeItem();
+      return ListView.builder(
+        itemCount: ['a','b','c'].length,
+        itemBuilder: (context,index){
+          final Food listitem = lst[index];
+          return ListTile(
+            title: Text(listitem.title),);
+        },
+      );
+  }
 
-// }
+}

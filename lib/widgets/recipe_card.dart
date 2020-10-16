@@ -10,7 +10,7 @@ class RecipesListCard extends StatelessWidget {
       color: Colors.green,
       child: Row(
         children: <Widget>[
-          Container(
+          Flexible(
             child: Stack(
               children: <Widget>[
                 Expanded(
@@ -19,7 +19,7 @@ class RecipesListCard extends StatelessWidget {
                     height: 80,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(0.0),
+                        // topRight: Radius.circular(0.0),
                         topLeft: Radius.circular(10.0),
                         bottomLeft: Radius.circular(10.0),
                       ),
@@ -83,10 +83,12 @@ class RecipesGridCard extends StatelessWidget {
                         topRight: Radius.circular(10.0),
                         topLeft: Radius.circular(10.0),
                       ),
-                      image: DecorationImage(
-                          image: AssetImage("themes/images/jaja.jpeg"),
-                          fit: BoxFit.cover,
-                      ), 
+                      
+                      // image: DecorationImage(
+                          
+                      //     image: AssetImage("themes/images/jaja.jpeg"),
+                      //     fit: BoxFit.cover,
+                      // ), 
                   ),
                 ),
                 Positioned(

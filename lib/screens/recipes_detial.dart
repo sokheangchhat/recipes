@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
-import 'package:recipes/widgets/recipe_card.dart';
-
 
 class RecipesDetial extends StatefulWidget {
   @override
@@ -21,7 +19,6 @@ class _RecipesDetialState extends State<RecipesDetial> {
       super.dispose();
       bloc.dispose();
     }
-  
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -33,40 +30,63 @@ class _RecipesDetialState extends State<RecipesDetial> {
         ),
         body: Column(
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                
-              ],
+            Container(
+              padding: EdgeInsets.only(right: 10,bottom: 200),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(16.0),
+                      topLeft: Radius.circular(16.0),
+                    ),
+                    image: DecorationImage(
+                        image: AssetImage("themes/images/jaja.jpeg"),
+                        fit: BoxFit.cover,
+                    ), 
+                ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                     child: Text("Nutrition",style: TextStyle(color: Colors.white,fontSize:  20),),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(right: 10,bottom: 20),
+                        child: Text("Cacries 200",
+                          style: TextStyle(
+                            color: Colors.white,fontSize:  15),
+                        ),
+                        
+                      ),
+                      Container(
+                         padding: EdgeInsets.only(right: 10,bottom: 20),
+                        child: Text("Protein 10gm",
+                          style: TextStyle(
+                            color: Colors.white,fontSize:  15),
+                        ),
+                        
+                      ),
+                      Container(
+                         padding: EdgeInsets.only(right: 10,bottom: 20),
+                        child: Text("Carb 50gm",
+                          style: TextStyle(
+                            color: Colors.white,fontSize:  15),
+                        ),
+                        
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               
             ),
-             _itemGrid(),
           ],
         ),
-        
       );   
     } 
   
-    RecipesGridCard _itemCardGrid() {
-    return RecipesGridCard();
-  }
-
-   Widget _itemGrid() {
-    return Expanded(
-      child: Column(
-        
-      ),
-      // child: GridView.count(
-      //   padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
-      //   crossAxisSpacing: 10,
-      //   mainAxisSpacing: 10,
-      //   crossAxisCount: 2,
-      //   children: List.generate(100, (index) {
-      //     // return _alertDialog(context, index);
-      //     return _itemCardGrid();
-      //   }),
-      // ),
-    );
-  }
+    
 
 }
 
