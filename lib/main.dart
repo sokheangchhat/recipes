@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: '====Recipes====',
       home: RecipesScreen(),
-      // home: SearchScreen(),
+      // home: SearchScreen(), 
       
     );
   }

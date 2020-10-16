@@ -11,7 +11,7 @@ class SearchScreen extends StatefulWidget {
 class _RecipesScreenState extends State<SearchScreen> {
   RecipesViewBloc bloc = new RecipesViewBloc();
 
-
+ 
   @override
   void initState() {
     super.initState();
