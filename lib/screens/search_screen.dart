@@ -14,15 +14,12 @@ class _RecipesScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-
   }
-
   @override
   void dispose() {
     super.dispose();
     bloc.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,126 +30,43 @@ class _RecipesScreenState extends State<SearchScreen> {
           title: Text('Search recipes'),
       ),
       body: Column(
+        
         children: <Widget>[
-          // Column(
-          //   children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Center(
-                    child: Stack (
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(left:20,top: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                
-                                // padding: EdgeInsets.only(left:1),
-                                decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(25.0),),
-                                  // borderRadius: BorderRadius.only(
-                                  //   // topRight: Radius.circular(10.0),
-                                  //   topLeft: Radius.circular(24.0),
-                                  //   bottomLeft: Radius.circular(24),
-                                  // ),
-                                  color: Colors.grey,
-                              ),
-                                // decoration: const BoxDecoration(
-                                //   color: Colors.white,
-                                  
-                                //   // borderRadius: BorderRadius.all(Radius.circular(20),),
-                                // ),
-                                child: SizedBox(
-                                  width: 255,
-                                  height: 48,
-                                  child: TextField(
-                                    
-                                    decoration: InputDecoration(
-                                      
-                                      // icon: IconButton(icon: Icon(Icons.search,color: Colors.black,), onPressed: null),
-                                      contentPadding: EdgeInsets.only(left:15,top: 15,bottom: 15,right: 15),
-                                        border: InputBorder.none,
-                                            // labelText: "Search recipes",
-                                          hintText: "Search",
-                                         ),
-                                    ),
-                                  ),
-                              ),
-                              SizedBox(width: 15,),
-                              Container(
-                                child: Stack(
-                                  children: <Widget>[
-                                    Container(
-                                      // decoration: BoxDecoration(
-                                      //   borderRadius: BorderRadius.all(Radius.circular(24))
-                                      // ),
-                                      // color: Colors.grey,
-                                      child: Container(
-                                        // padding: EdgeInsets.all(),
-                                          decoration: const BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(24.0),),
-                                            color: Colors.green,
-                                        ),
-                                        // color: Colors.black,
 
-                                        child: IconButton(icon: Icon(Icons.search,color: Colors.white,), onPressed: (){}),
-                                        
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              // Container(
-                              //   decoration: const BoxDecoration(
-                              //     borderRadius: BorderRadius.only(
-                              //       topRight: Radius.circular(24.0),
-                              //       bottomRight: Radius.circular(24.0),
-                              //     ),
-                              //     color: Colors.green,
-                              //   ),
-                              //     // color: Colors.green,
-                              //     child: IconButton(icon: Icon(Icons.search,color: Colors.white,), onPressed: null),
-                              // ), 
-                                    // child: SizedBox(
-                                    //   width: 300,
-                                    //   height: 50,
-                                    //   child:TextField(
-                                        
-                                    //     decoration: InputDecoration(
-                                    //       contentPadding: EdgeInsets.only(left: 15 ,top: 15,bottom: 15),
-                                    //       // border: InputBorder.none,
-                                    //       // labelText: "Search recipes",
-                                    //       hintText: "Search",
-                                    //         icon: IconButton(icon: Icon(Icons.search,color: Colors.white,), onPressed: null),
-                                    //       // contentPadding:  EdgeInsets.only(
-                                    //       // left: 20.0, bottom: 8.0, top: 8.0),
-                                          
-                                    //       border: OutlineInputBorder(
-                                    //       borderSide: new BorderSide(color: Colors.red),
-                                    //       borderRadius: BorderRadius.all(Radius.circular(25.0),),
-                                          
-                                    //     ),
-                                    //     // icon: IconButton(icon: Icon(Icons.search), onPressed: null),
-                                    //     ),  
-                                    //     ),
-                                    //   ),
-                        
-                              ],
-                            ),
-                          ),
-                      ],
+          SizedBox(height: 15,),
+          Center(
+            child: Container(
+              // padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0,top: 5),
+               
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(24.0),),
+                  
+                  color: Colors.white,
+              ),
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 280,
+                    height: 40,
+                    child: TextField(
+                      scrollPadding: EdgeInsets.all(20),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: 20 ,bottom: 5,right: 20),
+                        border: InputBorder.none,
+                        // labelText: "Search recipes",
+                        hintText: "Search",
+                      ),
                     ),
-                    
                   ),
                 ],
               ),
-              
+            ),
+          ),
               _itemList(),
         ],
       ),    
     );   
   } 
-  
   }
   RecipesListCard _itemCardList() {
     return RecipesListCard();

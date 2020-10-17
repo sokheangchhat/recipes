@@ -84,11 +84,11 @@ class RecipesGridCard extends StatelessWidget {
                         topLeft: Radius.circular(10.0),
                       ),
                       
-                      // image: DecorationImage(
+                      image: DecorationImage(
                           
-                      //     image: AssetImage("themes/images/jaja.jpeg"),
-                      //     fit: BoxFit.cover,
-                      // ), 
+                          image: AssetImage("themes/images/jaja.jpeg"),
+                          fit: BoxFit.cover,
+                      ), 
                   ),
                 ),
                 Positioned(

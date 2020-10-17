@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:recipes/widgets/recipe_card.dart';
 
 // import 'screens/recipes_detial.dart';
+import 'screens/recipes_detial.dart';
 import 'screens/recipes_screen.dart';
 
 
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '====Recipes====',
-      home: RecipesScreen(),
-      // home: RecipesDetial(),
+      // home: RecipesScreen(),
+      home: RecipesDetial(),
       // home:_TextFieldAutoCompleteState(),
     );
   }
