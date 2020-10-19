@@ -1,64 +1,271 @@
 
+// import 'package:flutter/material.dart';
+// import 'package:recipes/bloc/recipes_view_bloc.dart';
+
+// class RecipesDetial extends StatefulWidget {
+//   @override
+//   _RecipesDetialState createState() => _RecipesDetialState();
+// }
+// class _RecipesDetialState extends State<RecipesDetial> {
+//   RecipesViewBloc bloc = new RecipesViewBloc();
+//     @override
+//     void initState() {
+//       super.initState();
+  
+//     }
+  
+//     @override
+//     void dispose() {
+//       super.dispose();
+//       bloc.dispose();
+//     }
+//     @override
+//     Widget build(BuildContext context) {
+//       return Scaffold(
+//         backgroundColor: Color.fromARGB( 255,37, 52, 64),
+//         appBar: AppBar(
+//           backgroundColor: Color.fromARGB( 255,37, 52, 64),
+//           centerTitle: true,
+//             title: Text('Recipes Detial'),
+//         ),
+//         body: Column(
+//           children: <Widget>[
+//             Container(
+//               padding: EdgeInsets.only(right: 10,bottom: 200),
+//                 decoration: const BoxDecoration(
+//                     borderRadius: BorderRadius.only(
+//                       topRight: Radius.circular(16.0),
+//                       topLeft: Radius.circular(16.0),
+//                     ),
+//                     image: DecorationImage(
+//                         image: AssetImage("themes/images/jaja.jpeg"),    
+//                         fit: BoxFit.cover,
+//                     ), 
+//                 ),
+//             ),
+//             Column(
+//               children: <Widget>[
+//                 Container(
+//                   child: Column(
+//                     children: <Widget>[
+//                       Container(
+//                         padding: EdgeInsets.all(20),
+//                          child: Text("Nutrition",style: TextStyle(color: Colors.white,fontSize:  25),),
+//                       ),
+//                       Row(
+                        
+//                         children: <Widget>[
+//                           SizedBox(height: 40, ),
+//                           Flexible(
+//                             // padding: EdgeInsets.only(right: 10,bottom: 20),
+//                             child: Text("Calories 200",
+//                               style: TextStyle(
+//                                 color: Colors.white,fontSize:  15),
+//                             ),
+                            
+//                           ),
+//                           SizedBox(width: 30,),
+//                           Flexible(
+//                             // padding: EdgeInsets.only(right: 10,bottom: 20),
+//                             child: Text("Protain 10gm",
+//                               style: TextStyle(
+//                                 color: Colors.white,fontSize:  15),
+//                             ),
+                            
+//                           ),
+//                           SizedBox(width: 30,),
+//                           Flexible(
+//                             // padding: EdgeInsets.only(right: 10,bottom: 20),
+//                             child: Text("Carb 50gm",
+//                               style: TextStyle(
+//                                 color: Colors.white,fontSize:  15),
+//                             ),
+                            
+//                           ),
+                          
+                          
+//                         ],
+//                       ),
+//                     ],
+//                   ),
+                  
+//                 ),
+//               ],
+//             ),
+//             Container(
+//                     padding: EdgeInsets.all(20),
+//                      child: Text("Ingredients",style: TextStyle(color: Colors.white,fontSize:  25,),),
+//                   ),
+//             Row(
+//               children: <Widget>[
+                
+//                 Container(
+                  
+//                   padding: EdgeInsets.only(left: 5,top: 5,right: 5,bottom: 10),
+//                   decoration: const BoxDecoration(
+//                   borderRadius: BorderRadius.all(Radius.circular(24.0),),
+//                   color: Colors.green,
+//                   ),
+                  
+//                   child: Container(
+
+//                     child: Text("2 shots espreso(a double shot)",
+//                       style: TextStyle(color: Colors.black,fontSize: 15),
+                      
+//                     ),
+//                   ),
+//                 ),
+//                 SizedBox(width: 15,),
+//                 Container(
+                  
+//                   padding: EdgeInsets.only(left: 5,top: 5,right: 5,bottom: 10),
+//                   decoration: const BoxDecoration(
+//                   borderRadius: BorderRadius.all(Radius.circular(24.0),),
+//                   color: Colors.green,
+//                   ),
+                  
+//                   child: Container(
+
+//                     child: Text("4 cunces milk)",
+//                       style: TextStyle(color: Colors.black,fontSize: 15),
+                      
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             // SizedBox(height:10),
+//             Column(
+//               children: <Widget>[
+//                 Container(
+//                   padding: EdgeInsets.all(20),
+//                     child: Text("Steps",style: TextStyle(color: Colors.white,fontSize:  25,),
+//                 ),
+//                 ),
+//                 SizedBox(height:50),
+//                 Row(
+//                   children: <Widget>[
+//                     Container(      
+//                       width: 35.0,
+//                       height: 35.0,
+//                       padding: const EdgeInsets.all(10.0),
+//                       decoration: BoxDecoration(
+//                         shape: BoxShape.rectangle,
+//                         color: Colors.green,
+//                         borderRadius: BorderRadius.only( 
+//                           topLeft: Radius.circular(20.0),
+//                           topRight: Radius.circular(20.0),
+//                           bottomLeft: Radius.circular(20.0),
+//                           bottomRight: Radius.circular(20.0),
+//                         ),
+//                       ),
+//                       child: Text(
+//                         "1",style: TextStyle(color: Colors.black),
+//                       ),
+//                     ),
+//                     SizedBox(width: 10,),
+//                     Text("Gather the ingredients.",style: TextStyle(color: Colors.white),),
+//                   ],
+//                 ),
+//                 Row(
+//                   children: <Widget>[
+//                     Container(      
+//                       width: 35.0,
+//                       height: 35.0,
+//                       padding: const EdgeInsets.all(10.0),
+//                       decoration: BoxDecoration(
+//                         shape: BoxShape.rectangle,
+//                         color: Colors.green,
+//                         borderRadius: BorderRadius.only( 
+//                           topLeft: Radius.circular(20.0),
+//                           topRight: Radius.circular(20.0),
+//                           bottomLeft: Radius.circular(20.0),
+//                           bottomRight: Radius.circular(20.0),
+//                         ),
+//                       ),
+//                       child: Text(
+//                         "2",style: TextStyle(color: Colors.black),
+//                       ),
+//                     ),
+//                     SizedBox(width: 10,),
+//                     Container(
+//                       child:  ConstrainedBox(
+//                         constraints: BoxConstraints(
+//                           maxHeight: 100,
+//                           maxWidth: 300,
+//                           minHeight: 30,
+//                           minWidth: 300),
+//                         child: Text(
+//                           "yourText",
+//                           style: TextStyle(color: Colors.white,),
+//                         ),
+//                       ),
+                      
+//                     ),
+                    
+                    
+//                   ],
+//                 ),
+//                 Container(
+//                   padding: EdgeInsets.all(20),
+//                     child: Text("step",style: TextStyle(color: Colors.white,fontSize:  25,),
+//                 ),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       );   
+//     } 
+  
+    
+
+// }
+
+
+
 import 'package:flutter/material.dart';
+import 'package:recipes/bloc/recipes_view_bloc.dart';
 
-
-//class LoginState extends State<Login> {
+class RecipesDetial extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            title: Text("SMARTID", textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'Open Sans', fontWeight: FontWeight.bold)),
-            leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/images/appicon.png",
-                  scale: 8.0,
-                )
-            )
+  _RecipesDetialState createState() => _RecipesDetialState();
+}
+class _RecipesDetialState extends State<RecipesDetial> {
+  RecipesViewBloc bloc = new RecipesViewBloc();
+    @override
+    void initState() {
+      super.initState();
+  
+    }
+  
+    @override
+    void dispose() {
+      super.dispose();
+      bloc.dispose();
+    }
+    @override
+    Widget build(BuildContext context) {
+     return Scaffold(
+       backgroundColor: Colors.white,
+       appBar: buildAppBar(context),
+       body: Body(),
+     );
+    } 
+
+    AppBar buildAppBar(BuildContext context){
+      return AppBar(
+        backgroundColor: Colors.blue,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_right_outlined),
+          onPressed: (){},
+          
         ),
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            Container(
-                alignment: Alignment(0, -0.5),
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/background.jpg'),
-                      fit: BoxFit.cover,
-                    )
-                )
-            ),
+      );
+    }
+    
 
-            Positioned(
-                width: MediaQuery.of(context).size.width,
-                top: MediaQuery.of(context).size.width * 0.30,//TRY TO CHANGE THIS **0.30** value to achieve your goal 
-                child: Container(
-                  margin: EdgeInsets.all(16.0),
-                  child:Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset('assets/images/appicon.png', scale: 2.5),
-                        SizedBox(height: 20,),
-                        Text("SMARTID", style: TextStyle(
-                            fontSize: 30, color: Colors.white,fontFamily: 'Open Sans',
-                            fontWeight: FontWeight.bold))
-                      ]
-                  ),
-                ))
-          ],
-        )
-    );
-  }
+}
 
 
-  //}
