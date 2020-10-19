@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
 import 'package:recipes/models/food.dart';
+import 'package:recipes/screens/notification_screen.dart';
 import 'package:recipes/screens/recipes_detial.dart';
 import 'package:recipes/widgets/recipe_card.dart';
 
@@ -126,23 +127,25 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 Navigator.pop(context);
               },
             ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Setting'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+            
             ListTile(
               leading: Icon(Icons.notifications),
               title: Text('Notification'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationScreen(),),);
               },
             ),
             ListTile(
               leading: Icon(Icons.save),
               title: Text('Myrecipes'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Setting'),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -231,7 +234,6 @@ class _RecipesScreenState extends State<RecipesScreen> {
   
 
 
-//===========
 
 class RecipesItemSearch extends SearchDelegate<ListView> {
   @override
@@ -267,5 +269,10 @@ class RecipesItemSearch extends SearchDelegate<ListView> {
         },
       );
   }
+  RecipesDetial _recipesDetial(){
+    return RecipesDetial();
+  }
+
+
 
 }

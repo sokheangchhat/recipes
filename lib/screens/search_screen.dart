@@ -41,13 +41,11 @@ class _RecipesScreenState extends State<SearchScreen> {
             padding: const EdgeInsets.only(left: 25.0, right: 25.0, bottom: 20.0,top: 25.0),
               child: Container(
                 padding: const EdgeInsets.only(left: 20.0, right: 5.0, bottom: 5.0,top: 5.0),
-                // padding: EdgeInsets.all(3),
-                // padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0,top: 5),
                  
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(40.0),),
                                     
-                    color: Colors.white,
+                    color: Colors.grey,
                 ),
                 
                 child: Row(
@@ -57,7 +55,7 @@ class _RecipesScreenState extends State<SearchScreen> {
                     Flexible(
                      
                       child: TextField(
-                        scrollPadding: EdgeInsets.all(20),
+                        scrollPadding: EdgeInsets.all(10),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: 20),
                           border: InputBorder.none,
@@ -75,7 +73,7 @@ class _RecipesScreenState extends State<SearchScreen> {
                       ),
                       
                       
-                      child: IconButton(icon: Icon(Icons.search),
+                      child: IconButton(icon: Icon(Icons.search,color: Colors.white,),
                         onPressed: (){},
                       ),
                     ),
