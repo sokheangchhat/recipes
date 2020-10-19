@@ -72,256 +72,361 @@ class _RecipesDetialState extends State<RecipesDetial> {
                     
                   ],
                 ),
-                Center(
+                Container(
+                  padding: EdgeInsets.only(left: 10),
                   child: Container(
-                    padding: EdgeInsets.only(top: 20),
                     child: Column(
                       children: <Widget>[
                         Container(
-                         
                           padding: EdgeInsets.all(10),
-                           child: Text("Nutrition",style: TextStyle(color: Colors.white,fontSize:  25),),
+                          child: Text("Nutrition",style: TextStyle(color: Colors.white,fontSize: 25),),
+
                         ),
-                        Center(
-                          child: Row(
-                            
-                            children: <Widget>[
-                              SizedBox(height: 40, ),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "1",style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
                               Container(
-                                padding: EdgeInsets.all(10),
-                                child: Text("Calories 200",
-                                  style: TextStyle(
-                                    color: Colors.white,fontSize:  15),
-                                ),
-                                
+                                child:  ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
                               ),
-                              SizedBox(width: 30,),
-                              Flexible(
-                                // padding: EdgeInsets.only(right: 10,bottom: 20),
-                                child: Text("Protain 10gm",
-                                  style: TextStyle(
-                                    color: Colors.white,fontSize:  15),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
                                 ),
-                                
                               ),
-                              SizedBox(width: 30,),
-                              Flexible(
-                                // padding: EdgeInsets.only(right: 10,bottom: 20),
-                                child: Text("Carb 50gm",
-                                  style: TextStyle(
-                                    color: Colors.white,fontSize:  15),
+                              child: Center(
+                                child: Text(
+                                  "2",style: TextStyle(color: Colors.black),
                                 ),
-                                
                               ),
-                              
-                              
-                            ],
-                          ),
+                            ),
+                            SizedBox(width: 10),
+                              Container(
+                                padding: EdgeInsets.only(bottom: 20),
+                                child:  ConstrainedBox(
+                                  
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot.dferferferffdferferferffefefef",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "3",style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                              Container(
+                                child:  ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot.dferferferffdferferferffefefe",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
                         ),
                       ],
                     ),
-                    
                   ),
                 ),
-                Column(
-                  children: <Widget>[
-                    Center(
-                      child: Container(
-                            padding: EdgeInsets.only(left: 5,top: 5,right: 5,bottom: 10),
-                            child: Text("Ingredient",style: TextStyle(color: Colors.white,fontSize:  25,),
-                            ),
-                          ),
-                    ),
-                    Row(
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Container(
+                    child: Column(
                       children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Text("Ingrite",style: TextStyle(color: Colors.white,fontSize: 25),),
 
-                        Container(
-                          width: 150,
-                          // padding: EdgeInsets.only(left: 5,top: 5,right: 5,bottom: 10),
-                          padding: EdgeInsets.only(left:10 ,right: 10,top: 10,bottom: 10),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(24.0),),
-                            color: Colors.green,
-                          ),
-                          child: Container(
-                            child: Text("2 shots espreso(a doer)",
-                              style: TextStyle(color: Colors.black,fontSize: 15),
-                            ),
-                          ),
                         ),
-                        SizedBox(width: 5,),
-                        Container(
-                          width: 150,
-                          padding: EdgeInsets.only(left:10 ,right: 10,top: 10,bottom: 10),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(24.0),),
-                            color: Colors.green,
-                          ),
-                          child: Container(
-                            child: Text("4 cunces milk  )",
-                              style: TextStyle(color: Colors.black,fontSize: 15),  
-                            ),
-                          ),
-                        ),
-                  ],
-                ),
-                ],
-                ),
-                
-
-                Column(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      child: Text("Steps",style: TextStyle(color: Colors.white,fontSize:  25,),
-                      ),
-                    ),
-                    SizedBox(height:20),
-                    Row(
-                      children: <Widget>[
-                        Container(      
-                          width: 35.0,
-                          height: 35.0,
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.green,
-                            borderRadius: BorderRadius.only( 
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            ),
-                          ),
-                          child: Text(
-                            "1",style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        SizedBox(width: 10,),
-                          Text("Gather the ingredients.",style: TextStyle(color: Colors.white),),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Container(      
-                          width: 35.0,
-                          height: 35.0,
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.green,
-                            borderRadius: BorderRadius.only( 
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            ),
-                          ),
-                          child: Text(
-                            "2",style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        SizedBox(width: 10,height: 10,),
-                        Container(
-                          child:  ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxHeight: 100,
-                              maxWidth: 300,
-                              minHeight: 30,
-                              minWidth: 300),
-                              child: Text(
-                                "yourText",
-                                style: TextStyle(color: Colors.white,),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "1",style: TextStyle(color: Colors.black),
+                                ),
                               ),
                             ),
+                            SizedBox(width: 10,),
+                              Container(
+                                child:  ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
                         ),
-                      ],
-                    ), 
-
-                    Row(
-                      children: <Widget>[
-                        Container(      
-                          width: 35.0,
-                          height: 35.0,
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.green,
-                            borderRadius: BorderRadius.only( 
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            ),
-                          ),
-                          child: Text(
-                            "3",style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        SizedBox(width: 10,),
-                        Container(
-                          child:  ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxHeight: 100,
-                              maxWidth: 300,
-                              minHeight: 30,
-                              minWidth: 300),
-                              child: Text(
-                                "First you need to take a water to be hot.dferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffefeferferferferff",
-                                style: TextStyle(color: Colors.white,),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "2",style: TextStyle(color: Colors.black),
+                                ),
                               ),
                             ),
+                            SizedBox(width: 10),
+                              Container(
+                                padding: EdgeInsets.only(bottom: 20),
+                                child:  ConstrainedBox(
+                                  
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot.dferferferffdferferferffefefef",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
                         ),
                       ],
                     ),
-
-                    Row(
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Container(
+                    child: Column(
                       children: <Widget>[
-                        Container(      
-                          width: 35.0,
-                          height: 35.0,
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Colors.green,
-                            borderRadius: BorderRadius.only( 
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            ),
-                          ),
-                          child: Text(
-                            "4",style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        SizedBox(width: 10,),
                         Container(
-                          child:  ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxHeight: 100,
-                              maxWidth: 300,
-                              minHeight: 30,
-                              minWidth: 300
-                              
+                          padding: EdgeInsets.all(10),
+                          child: Text("Steps",style: TextStyle(color: Colors.white,fontSize: 25),),
+
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "1",style: TextStyle(color: Colors.black),
+                                ),
+                              ),
                             ),
-                            child: Text(
-                              "yourText fejorffjeorflfjdoferjfodfjerofelrjfofjerofjfoerjfofjeorfferferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffdferferferffefeferferferferffefeferferferferfjjdjfeorfjosfjr",
-                              style: TextStyle(color: Colors.white,),
+                            SizedBox(width: 10,),
+                              Container(
+                                child:  ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "2",style: TextStyle(color: Colors.black),
+                                ),
+                              ),
                             ),
-                          ),
+                            SizedBox(width: 10),
+                              Container(
+                                padding: EdgeInsets.only(bottom: 20),
+                                child:  ConstrainedBox(
+                                  
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot.dferferferffdferferferffefefef",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(      
+                              width: 35.0,
+                              height: 35.0,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.only( 
+                                  topLeft: Radius.circular(20.0),
+                                  topRight: Radius.circular(20.0),
+                                  bottomLeft: Radius.circular(20.0),
+                                  bottomRight: Radius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "3",style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                              Container(
+                                child:  ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: 100,
+                                    maxWidth: 300,
+                                    minHeight: 30,
+                                    minWidth: 300),
+                                    child: Text(
+                                      "First you need to take a water to be hot.dferferferffdferferferffefefe",
+                                      style: TextStyle(color: Colors.white,),
+                                    ),
+                                  ),
+                              ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
-
             ),
-
-            
-            
           ],
         ),
       );   
