@@ -7,7 +7,7 @@ class RecipesDetial extends StatefulWidget {
   _RecipesDetialState createState() => _RecipesDetialState();
 }
 class _RecipesDetialState extends State<RecipesDetial> {
-  RecipesViewBloc bloc = new RecipesViewBloc();
+  RecipesViewBloc bloc = new RecipesViewBloc();   
     @override
     void initState() {
       super.initState();
@@ -28,7 +28,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
           centerTitle: true,
             title: Text('Recipes Detial'),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios), 
+              icon: Icon(Icons.arrow_back), 
               onPressed: (){Navigator.pop(context);}),
         ),
         body: Column(
@@ -73,6 +73,42 @@ class _RecipesDetialState extends State<RecipesDetial> {
                   ],
                 ),
                 Container(
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        
+                        padding: EdgeInsets.all(5),
+                        child: Expanded(
+                          child: Row(
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(Icons.favorite,color: Colors.white,size: 24,),
+                                onPressed: (){},
+                              ),
+                              Text("Love",style: TextStyle(color: Colors.white,fontSize: 17),
+                              ),
+                              // SizedBox(width: 47,),
+                              IconButton(
+                                icon: Icon(Icons.save,color: Colors.white,size: 24,),
+                                onPressed: (){},
+                              ),
+                              Text("Save",style: TextStyle(color: Colors.white,fontSize: 17),
+                              ),
+                              // SizedBox(width: 47,),
+                               IconButton(
+                                icon: Icon(Icons.share,color: Colors.white,size: 24,),
+                                onPressed: (){},
+                              ),
+                              Text("Share",style: TextStyle(color: Colors.white,fontSize: 17),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
                   padding: EdgeInsets.only(left: 10),
                   child: Container(
                     child: Column(
@@ -82,8 +118,10 @@ class _RecipesDetialState extends State<RecipesDetial> {
                           child: Text("Nutrition",style: TextStyle(color: Colors.white,fontSize: 25),),
 
                         ),
+                        SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
+                            SizedBox(height: 10,),
                             Container(      
                               width: 35.0,
                               height: 35.0,
@@ -113,7 +151,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot",
+                                      "First you need to take a water to be hot.dferfderferferfefeferfrfefferfeferferffdferferferffefefe",
                                       style: TextStyle(color: Colors.white,),
                                     ),
                                   ),
@@ -142,24 +180,23 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 10,),
                               Container(
-                                padding: EdgeInsets.only(bottom: 20),
                                 child:  ConstrainedBox(
-                                  
                                   constraints: BoxConstraints(
                                     maxHeight: 100,
                                     maxWidth: 300,
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot.dferferferffdferferferffefefef",
+                                      "First you need to take a water to be hot.dferferferffdferferferffefefe",
                                       style: TextStyle(color: Colors.white,),
                                     ),
                                   ),
                               ),
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
                             Container(      
@@ -209,11 +246,13 @@ class _RecipesDetialState extends State<RecipesDetial> {
                       children: <Widget>[
                         Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("Ingrite",style: TextStyle(color: Colors.white,fontSize: 25),),
+                          child: Text("Ingredients",style: TextStyle(color: Colors.white,fontSize: 25),),
 
                         ),
+                        
                         Row(
                           children: <Widget>[
+                            
                             Container(      
                               width: 35.0,
                               height: 35.0,
@@ -234,22 +273,25 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(width: 10),
                               Container(
+                                padding: EdgeInsets.only(top: 10),
                                 child:  ConstrainedBox(
+                                  
                                   constraints: BoxConstraints(
                                     maxHeight: 100,
                                     maxWidth: 300,
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot",
-                                      style: TextStyle(color: Colors.white,),
-                                    ),
+                                        "First you need to take a water to be hot.",
+                                        style: TextStyle(color: Colors.white,),
+                                      ),
                                   ),
                               ),
                           ],
                         ),
+                        // SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
                             Container(      
@@ -274,7 +316,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                             ),
                             SizedBox(width: 10),
                               Container(
-                                padding: EdgeInsets.only(bottom: 20),
+                                padding: EdgeInsets.only(top: 10),
                                 child:  ConstrainedBox(
                                   
                                   constraints: BoxConstraints(
@@ -283,9 +325,9 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot.dferferferffdferferferffefefef",
-                                      style: TextStyle(color: Colors.white,),
-                                    ),
+                                        "First you need to take a water to be hot.",
+                                        style: TextStyle(color: Colors.white,),
+                                      ),
                                   ),
                               ),
                           ],
@@ -304,6 +346,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                           child: Text("Steps",style: TextStyle(color: Colors.white,fontSize: 25),),
 
                         ),
+                        SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
                             Container(      
@@ -335,13 +378,14 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot",
+                                      "Produce, or the term used to describe fresh fruits and vegetables, is commonly purchased by grocery store shoppers. In terms of fruit, most grocery stores offer bananas, apples, oranges, blackberries, raspberries, grapes, pineapples, cantaloupes, watermelons, and more; ",
                                       style: TextStyle(color: Colors.white,),
                                     ),
                                   ),
                               ),
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
                             Container(      
@@ -366,7 +410,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                             ),
                             SizedBox(width: 10),
                               Container(
-                                padding: EdgeInsets.only(bottom: 20),
+                                
                                 child:  ConstrainedBox(
                                   
                                   constraints: BoxConstraints(
@@ -375,13 +419,14 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot.dferferferffdferferferffefefef",
-                                      style: TextStyle(color: Colors.white,),
-                                    ),
+                                        "Produce, or the term used to describe fresh fruits and vegetables, is commonly purchased by grocery store shoppers. In terms of fruit, most grocery stores offer bananas, apples, oranges, blackberries, raspberries, grapes, pineapples, cantaloupes, watermelons, and more; ",
+                                        style: TextStyle(color: Colors.white,),
+                                      ),
                                   ),
                               ),
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
                             Container(      
@@ -413,7 +458,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                                     minHeight: 30,
                                     minWidth: 300),
                                     child: Text(
-                                      "First you need to take a water to be hot.dferferferffdferferferffefefe",
+                                      "Produce, or the term used to describe fresh fruits and vegetables, is commonly purchased by grocery store shoppers. In terms of fruit, most grocery stores offer bananas, apples, oranges, blackberries, raspberries, grapes, pineapples, cantaloupes, watermelons, and more; ",
                                       style: TextStyle(color: Colors.white,),
                                     ),
                                   ),

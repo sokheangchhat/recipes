@@ -2,12 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
+import 'package:recipes/models/data.dart';
 import 'package:recipes/models/food.dart';
+import 'package:recipes/screens/myrecipes_screen.dart';
 import 'package:recipes/screens/notification_screen.dart';
 import 'package:recipes/screens/recipes_detial.dart';
 import 'package:recipes/widgets/recipe_card.dart';
-
-import 'search_screen.dart';
 import 'search_screen.dart';
 
 
@@ -108,6 +108,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       radius: 50.0,
+                      child: Icon(Icons.person,size: 100,),
                     ),
                   ),
                   Align(
@@ -120,59 +121,54 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 ],
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.image),
-              title: Text('Image'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            Column(
+              children: <Widget>[
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.image),
+                    title: Text('Image'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.notifications),
+                    title: Text('Notification'),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationScreen(),),);
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.save),
+                    title: Text('Myrecipes'),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> MyRecipesScreen(),),);
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Setting'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                 
+              ],
             ),
-            
-            ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Notification'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationScreen(),),);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.save),
-              title: Text('Myrecipes'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Setting'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            Expanded(
+            Container(
+              padding: EdgeInsets.only(top: 230),
               child: Align(
-                alignment: Alignment.topRight,
+                alignment: Alignment.bottomLeft,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ListTile(
-                      title: Text(''),
-                    ),
-                    //  ListTile(leading: Icon(Icons.settings),
-                    //   title: Text(''),
-                    //   onTap: () =>Navigator.pop(context),
-                    //  ),
-                    ListTile(
-                      title: Text(''),
-                    ),
-                    ListTile(
-                      title: Text(''),
-                    ),
-                    ListTile(
-                      title: Text(''),
-                    ),
-
                     ListTile(
                       title: Text('Version 1.0.0'),
                     ),
@@ -213,11 +209,11 @@ class _RecipesScreenState extends State<RecipesScreen> {
   }
 
   Widget _itemList(){
-    final List<String> item=<String> ['a','a','a','a'];
+    // final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: item.length,
+        itemCount: recipeitems.length,
         itemBuilder: (BuildContext context, index) {
           return _itemCardList(
             

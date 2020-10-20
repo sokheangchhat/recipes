@@ -14,11 +14,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   void initState() {
-    super.initState();
+    super.initState();//it is a life cicle,
   }
   @override
   void dispose() {
-    super.dispose();
+    super.dispose();//dispose is a distroy  class.
     bloc.dispose();
   }
   @override
@@ -40,11 +40,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
   }
 }
 Widget _notificationList(){
-  List suggestionList= <int>[1,2,3,4,5,6,];
+  List notificationList= <int>[1,2,3,4,5,6,];
   return Expanded (
     child: ListView.builder(
       padding: const EdgeInsets.all(10),
-      itemCount: suggestionList.length,
+      itemCount: notificationList.length,
       itemBuilder: (BuildContext context, index) {
         return BodyNotification();
       }

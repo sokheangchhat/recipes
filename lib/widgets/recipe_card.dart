@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recipes/models/data.dart';
 import 'package:recipes/screens/recipes_detial.dart';
 // import 'package:recipes/screens/recipes_detial.dart';
 
@@ -32,7 +33,6 @@ class RecipesListCard extends StatelessWidget {
                               image: DecorationImage(
                                 image: AssetImage("themes/images/jaja.jpeg"),
                                 fit: BoxFit.cover,
-                              
                               ), 
                             ),
                           ), 
@@ -63,15 +63,20 @@ class RecipesListCard extends StatelessWidget {
                     child: IconButton(
                       icon: Icon(Icons.description,color: Colors.white),
                       onPressed: (){
-                        AlertDialog(
-                          title:  Text("Summary "),
-                          content: Text("Do you want to get more detial? Please press on picture."),
-                          actions: [
-                            FlatButton(onPressed: (){}, child: Text("Yes")),
-                            FlatButton(onPressed: (){}, child: Text("No")),
-                          ],
-                          
-                          // shape: CircleBorder(),
+                        showDialog(
+                          context: context,
+                          child: new AlertDialog(
+                              title: const Text("Recipes Dialog!"),
+                              content: const Text(
+                                "Are you one to see more detial? Please press on picture to see detail. "
+                              ),
+                              actions: [
+                              new FlatButton(
+                                child: const Text("Close"),
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            ],
+                          ),
                         );
                       }),
                   ),
@@ -83,73 +88,89 @@ class RecipesListCard extends StatelessWidget {
         
       }
 
+      class RecipesGridCard extends StatelessWidget {
+      final press;
 
+      const RecipesGridCard({Key key, this.press}) : super(key: key);
+      
+      @override
+      Widget build(BuildContext context) {
+        return InkWell(
+          onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=> RecipesDetial(),),),},
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            color: Colors.green,
+            child: Column(
+              children: <Widget>[
+                // Container(
+                //   padding: EdgeInsets.all(20),
+                //   height: 180,
+                //   width: 160,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(16),
 
-class RecipesGridCard extends StatelessWidget {
-  final press;
+                //   ),
+                //   child: Image.asset(recipeitems[1].image),
+                // ),
+                // Text(recipeitems[1].nutrition),
 
-  const RecipesGridCard({Key key, this.press}) : super(key: key);
-  
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=> RecipesDetial(),),),},
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        color: Colors.green,
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(10.0),
-                          topLeft: Radius.circular(10.0),
-                        ),
-                        
-                        image: DecorationImage(
+                Expanded(
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10.0),
+                              topLeft: Radius.circular(10.0),
+                            ),
                             
-                            image: AssetImage("themes/images/jaja.jpeg"),
-                            fit: BoxFit.cover,
-                        ), 
-                    ),
+                            image: DecorationImage(
+                                
+                                image: AssetImage("themes/images/rice.jpg"),
+                                fit: BoxFit.cover,
+                            ), 
+                        ),
+                      ),
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: IconButton(
+                          icon: Icon(Icons.description,color: Colors.white,), 
+                          iconSize: 30,
+                          onPressed: (){
+                            
+                            showDialog(
+                              context: context,
+                              child: new AlertDialog(
+                                  title: const Text("Recipes Dialog!"),
+                                  content: const Text(
+                                    "Are you one to see more detial? Please press on picture to see detail. "
+                                  ),
+                                  actions: [
+                                  new FlatButton(
+                                    child: const Text("Close"),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        ),
+                      ),
+                    ],
                   ),
-                  Positioned(
-                    top: 10,
-                    right: 10,
-                    child: IconButton(
-                      icon: Icon(Icons.description,color: Colors.white,), 
-                      iconSize: 30,
-                      onPressed: (){
-                         AlertDialog(
-                          title:  Text("Summary "),
-                          content: Text("Do you want to get more detial? Please press on picture."),
-                          actions: [
-                            FlatButton(onPressed: (){}, child: Text("Yes")),
-                            FlatButton(onPressed: (){}, child: Text("No")),
-                          ],
-                          
-                          // shape: CircleBorder(),
-                        );
-                      }
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  child: Text(
+                    "Title",style: TextStyle(fontSize: 18),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-              child: Text(
-                "Title",style: TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
     );
       
   }
