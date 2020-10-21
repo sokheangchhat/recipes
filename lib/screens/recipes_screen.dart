@@ -80,8 +80,6 @@ class _RecipesScreenState extends State<RecipesScreen> {
           StreamBuilder<String>(
             stream: bloc.recipesViewStream,
             builder: (context, snapshot) {
-              debugPrint("hello");
-              debugPrint("${snapshot.data}");
               final view = snapshot.data;
               if(view == "list"){
                 return _itemList();
@@ -182,43 +180,29 @@ class _RecipesScreenState extends State<RecipesScreen> {
     );
   }
   
-
-  RecipesGridCard _itemCardGrid() {
-    return RecipesGridCard();
-  }
-  RecipesListCard _itemCardList() {
-    return RecipesListCard();
-  }
-  
-
-
   Widget _itemGrid() {
-
     return Expanded(
       child: GridView.count(
         padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: 2,
-        children: List.generate(4, (index) {
+        children: List.generate(recipes.length, (index) {
           // return _alertDialog(context, index);
-          return _itemCardGrid();
+          return RecipesGridCard();
         }),
       ),
     );
   }
 
   Widget _itemList(){
-    // final List<String> item=<String> ['a','a','a','a'];
+    final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: recipeitems.length,
+        itemCount: item.length,
         itemBuilder: (BuildContext context, index) {
-          return _itemCardList(
-            
-          );
-         
+          return RecipesListCard();
         }
       ),
     );
