@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recipes/models/data.dart';
+
 import 'package:recipes/screens/recipes_detial.dart';
 // import 'package:recipes/screens/recipes_detial.dart';
 
@@ -33,9 +35,10 @@ class RecipesListCard extends StatelessWidget {
                           bottomLeft: Radius.circular(10.0), 
                         ),
                         image: DecorationImage(
-                          image: AssetImage("themes/images/jaja.jpeg"),
+                          image: AssetImage("themes/images/delish.jpg"),
                           fit: BoxFit.cover,
                         ), 
+                        
                       ),
                     ), 
                   ),
@@ -91,13 +94,22 @@ class RecipesListCard extends StatelessWidget {
 
 class RecipesGridCard extends StatelessWidget {
   final recipeItem;
+  final image;
+  final title;
+  final e;
+  
 
-  const RecipesGridCard({Key key, this.recipeItem}) : super(key: key);
+  const RecipesGridCard({Key key, this.recipeItem, this.image, this.title, this.e}) : super(key: key);
+
+  
       
   @override
   Widget build(BuildContext context) {
+   
     return InkWell(
+      
       onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=> RecipesDetial(),),),},
+      
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -105,27 +117,18 @@ class RecipesGridCard extends StatelessWidget {
         color: Colors.green,
         child: Column(
           children: <Widget>[
-            // Container(
-            //   padding: EdgeInsets.all(20),
-            //   height: 180,
-            //   width: 160,
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.circular(16),
-
-            //   ),
-            //   child: Image.asset(recipeitems[1].image),
-            // ),
-            // Text(recipeitems[1].nutrition),
-
             Expanded(
+              
               child: Stack(
                 children: <Widget>[
-                  Container(
+                   Container(
+
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10.0),
                           topLeft: Radius.circular(10.0),
                         ),
+                        
                         
                         image: DecorationImage(
                             
@@ -133,7 +136,7 @@ class RecipesGridCard extends StatelessWidget {
                             fit: BoxFit.cover,
                         ), 
                     ),
-                  ),
+                  ), //this is a block of image that call from recipes_screen
                   Positioned(
                     top: 10,
                     right: 10,
@@ -172,6 +175,83 @@ class RecipesGridCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+
+  
+    
+    // return InkWell(
+    //   onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=> RecipesDetial(),),),},
+    //   child: Card(
+    //     shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(10.0),
+    //     ),
+    //     color: Colors.green,
+    //     child: Column(
+    //       children: <Widget>[
+    //         Expanded(
+    //           child: Stack(
+    //             children: <Widget>[
+    //               Container(
+
+    //                 decoration: const BoxDecoration(
+    //                     borderRadius: BorderRadius.only(
+    //                       topRight: Radius.circular(10.0),
+    //                       topLeft: Radius.circular(10.0),
+    //                     ),
+                        
+                        
+    //                     // image: DecorationImage(
+                            
+    //                     //     image: AssetImage("themes/images/rice.jpg"),
+    //                     //     fit: BoxFit.cover,
+    //                     // ), 
+    //                 ),
+    //               ),
+                  
+    //               Positioned(
+    //                 top: 10,
+    //                 right: 10,
+    //                 child: IconButton(
+    //                   icon: Icon(Icons.description,color: Colors.white,), 
+    //                   iconSize: 30,
+    //                   onPressed: (){
+                        
+    //                     showDialog(
+    //                       context: context,
+    //                       child: new AlertDialog(
+    //                           title: const Text("Recipes Dialog!"),
+    //                           content: const Text(
+    //                             "Are you one to see more detial? Please press on picture to see detail. "
+    //                           ),
+    //                           actions: [
+    //                           new FlatButton(
+    //                             child: const Text("Close"),
+    //                             onPressed: () => Navigator.pop(context),
+    //                           ),
+    //                         ],
+    //                       ),
+    //                     );
+    //                   }
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //         Container(
+    //           padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+    //           child: Text(
+    //             "Title",style: TextStyle(fontSize: 18),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
+  }
+  Widget _widget(){
+    
+    return Container(
+      child: Image.asset(e['image']),
     );
   }
 }

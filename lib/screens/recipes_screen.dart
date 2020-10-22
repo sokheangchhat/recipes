@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
 import 'package:recipes/models/data.dart';
-import 'package:recipes/models/food.dart';
 import 'package:recipes/screens/myrecipes_screen.dart';
 import 'package:recipes/screens/notification_screen.dart';
-import 'package:recipes/screens/recipes_detial.dart';
 import 'package:recipes/widgets/recipe_card.dart';
 import 'search_screen.dart';
 
@@ -188,71 +186,23 @@ class _RecipesScreenState extends State<RecipesScreen> {
         mainAxisSpacing: 10,
         crossAxisCount: 2,
         children: List.generate(recipes.length, (index) {
-          // return _alertDialog(context, index);
-          return RecipesGridCard();
+          return RecipesGridCard(recipeItem: recipes,);
         }),
       ),
     );
   }
 
   Widget _itemList(){
-    final List<String> item=<String> ['a','a','a','a'];
+    
+    // final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: item.length,
-        itemBuilder: (BuildContext context, index) {
-          return RecipesListCard();
+        itemCount: recipes.length,
+        itemBuilder: (BuildContext context, recipes) {
+          return RecipesListCard(recipeItem: recipes,);
         }
       ),
     );
   }
-}
-
-
-  
-  
-
-
-
-class RecipesItemSearch extends SearchDelegate<ListView> {
-  @override
-  List<Widget> buildActions(BuildContext context) {
-      return [IconButton(
-        icon: Icon(Icons.clear), 
-        onPressed: (){})];
-    }
-  
-    @override
-    Widget buildLeading(BuildContext context) {
-      return IconButton(
-        icon: Icon(Icons.arrow_back), 
-        onPressed: (){ 
-        });
-    }
-  
-    @override
-    Widget buildResults(BuildContext context) {
-
-      throw UnimplementedError();
-    }
-    
-    @override
-    Widget buildSuggestions(BuildContext context) {
-      final lst = loadRecipeItem();
-      return ListView.builder(
-        itemCount: ['a','b','c'].length,
-        itemBuilder: (context,index){
-          final Food listitem = lst[index];
-          return ListTile(
-            title: Text(listitem.title),);
-        },
-      );
-  }
-  RecipesDetial _recipesDetial(){
-    return RecipesDetial();
-  }
-
-
-
 }
