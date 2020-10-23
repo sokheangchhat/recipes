@@ -186,21 +186,20 @@ class _RecipesScreenState extends State<RecipesScreen> {
         mainAxisSpacing: 10,
         crossAxisCount: 2,
         children: List.generate(recipes.length, (index) {
-          return RecipesGridCard(recipeItem: recipes,);
+          return RecipesGridCard(recipeItem: recipes[index],);
         }),
       ),
     );
   }
 
   Widget _itemList(){
-    
     // final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
         itemCount: recipes.length,
-        itemBuilder: (BuildContext context, recipes) {
-          return RecipesListCard(recipeItem: recipes,);
+        itemBuilder: (BuildContext context, index) {
+          return RecipesListCard(recipeItem: recipes[index],);
         }
       ),
     );

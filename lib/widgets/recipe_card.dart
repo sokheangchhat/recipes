@@ -3,17 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:recipes/models/data.dart';
 
 import 'package:recipes/screens/recipes_detial.dart';
-// import 'package:recipes/screens/recipes_detial.dart';
 
 class RecipesListCard extends StatelessWidget {
   final recipeItem;
+  
 
-  const RecipesListCard({Key key, this.recipeItem}) : super(key: key);
+  const RecipesListCard({Key key, this.recipeItem,}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=> RecipesDetial(),),),},
+      onTap: () => {
+        Navigator.push(context, 
+          MaterialPageRoute(builder: (context)=> 
+            RecipesDetial(),
+            ),
+          ),
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -28,31 +34,32 @@ class RecipesListCard extends StatelessWidget {
                     child: Container( 
                       width: 150,
                       height: 80,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           // topRight: Radius.circular(0.0),
                           topLeft: Radius.circular(10.0),
                           bottomLeft: Radius.circular(10.0), 
                         ),
                         image: DecorationImage(
-                          image: AssetImage("themes/images/delish.jpg"),
+                          image: AssetImage("${recipeItem['image']}"),
                           fit: BoxFit.cover,
                         ), 
                         
                       ),
                     ), 
+                    
                   ),
                   
                 ],
               ),  
             ),
             Flexible(
-              child: new Container(
-                padding: new EdgeInsets.only(left:10.0,right:10.0),
-                child: new Text(
-                  'Sandwich is the best fast foods in my contry.',
+              child: Container(
+                padding: EdgeInsets.only(left:10.0,right:5.0),
+                child:  Text(
+                  "${recipeItem['title']}",
                   overflow: TextOverflow.ellipsis,
-                  style: new TextStyle(
+                  style: TextStyle(
                     fontSize: 18.0,
                     fontFamily: 'Roboto',
                     color: Colors.black,
@@ -61,29 +68,40 @@ class RecipesListCard extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
-              bottom: 50,
-              height: 100,
-              // right: 10,
-              child: IconButton(
-                icon: Icon(Icons.description,color: Colors.white),
-                onPressed: (){
-                  showDialog(
-                    context: context,
-                    child: new AlertDialog(
-                        title: const Text("Recipes Dialog!"),
-                        content: const Text(
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              
+              padding: EdgeInsets.all(1),
+              child: Positioned(
+                top: 10,
+                right: 10,
+                
+                child: IconButton(
+                  icon: Icon(Icons.description,color: Colors.white,), 
+                  iconSize: 30,
+                  onPressed: (){
+                    
+                    showDialog(
+                      context: context,
+                      child: AlertDialog(
+                        title: Text("Recipes Dialog!"),
+                        content: Text(
                           "Are you one to see more detial? Please press on picture to see detail. "
                         ),
                         actions: [
-                        new FlatButton(
-                          child: const Text("Close"),
+                          FlatButton(
+                          child: Text("Close"),
                           onPressed: () => Navigator.pop(context),
                         ),
-                      ],
-                    ),
-                  );
-                }),
+                        ],
+                      ),
+                    );
+                  }
+                ),
+              ),
             ),
           ],
         ),
@@ -93,15 +111,9 @@ class RecipesListCard extends StatelessWidget {
 }
 
 class RecipesGridCard extends StatelessWidget {
-  final recipeItem;
-  final image;
-  final title;
-  final e;
-  
+  final recipeItem;//property
 
-  const RecipesGridCard({Key key, this.recipeItem, this.image, this.title, this.e}) : super(key: key);
-
-  
+  const RecipesGridCard({Key key, this.recipeItem,}) : super(key: key);
       
   @override
   Widget build(BuildContext context) {
@@ -117,142 +129,75 @@ class RecipesGridCard extends StatelessWidget {
         color: Colors.green,
         child: Column(
           children: <Widget>[
-            Expanded(
-              
+            Flexible(
+              flex: 6,
               child: Stack(
                 children: <Widget>[
                    Container(
-
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10.0),
                           topLeft: Radius.circular(10.0),
                         ),
-                        
-                        
                         image: DecorationImage(
-                            
-                            image: AssetImage("themes/images/rice.jpg"),
+                            image: AssetImage("${recipeItem['image']}"),
                             fit: BoxFit.cover,
                         ), 
                     ),
-                  ), //this is a block of image that call from recipes_screen
-                  Positioned(
-                    top: 10,
-                    right: 10,
-                    child: IconButton(
-                      icon: Icon(Icons.description,color: Colors.white,), 
-                      iconSize: 30,
-                      onPressed: (){
-                        
-                        showDialog(
-                          context: context,
-                          child: new AlertDialog(
-                              title: const Text("Recipes Dialog!"),
-                              content: const Text(
-                                "Are you one to see more detial? Please press on picture to see detail. "
-                              ),
-                              actions: [
-                              new FlatButton(
-                                child: const Text("Close"),
-                                onPressed: () => Navigator.pop(context),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
+                  ), 
+                  //this is a block of image that call from recipes_screen
+                  Container(
+                    decoration: BoxDecoration(
+                       color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Positioned(
+                      child: IconButton(
+                        icon: Icon(Icons.description,color: Colors.white,), 
+                        iconSize: 30,
+                        onPressed: (){
+                          showDialog(
+                            context: context,
+                            child: new AlertDialog(
+                                title: const Text("Recipes Dialog!"),
+                                content: const Text(
+                                  "Are you one to see more detial? Please press on picture to see detail. "
+                                ),
+                                actions: [
+                                new FlatButton(
+                                  child: const Text("Close"),
+                                  onPressed: () => Navigator.pop(context),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-              child: Text(
-                "Title",style: TextStyle(fontSize: 18),
+            Flexible(
+              flex: 1,
+              child: Container(
+                padding: EdgeInsets.only(left:5.0,right:5.0,bottom: 2,top: 2),
+                child:  Text(
+                  "${recipeItem['title']}",
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Roboto',
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],
         ),
       ),
     );
-
+  }
   
-    
-    // return InkWell(
-    //   onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=> RecipesDetial(),),),},
-    //   child: Card(
-    //     shape: RoundedRectangleBorder(
-    //       borderRadius: BorderRadius.circular(10.0),
-    //     ),
-    //     color: Colors.green,
-    //     child: Column(
-    //       children: <Widget>[
-    //         Expanded(
-    //           child: Stack(
-    //             children: <Widget>[
-    //               Container(
-
-    //                 decoration: const BoxDecoration(
-    //                     borderRadius: BorderRadius.only(
-    //                       topRight: Radius.circular(10.0),
-    //                       topLeft: Radius.circular(10.0),
-    //                     ),
-                        
-                        
-    //                     // image: DecorationImage(
-                            
-    //                     //     image: AssetImage("themes/images/rice.jpg"),
-    //                     //     fit: BoxFit.cover,
-    //                     // ), 
-    //                 ),
-    //               ),
-                  
-    //               Positioned(
-    //                 top: 10,
-    //                 right: 10,
-    //                 child: IconButton(
-    //                   icon: Icon(Icons.description,color: Colors.white,), 
-    //                   iconSize: 30,
-    //                   onPressed: (){
-                        
-    //                     showDialog(
-    //                       context: context,
-    //                       child: new AlertDialog(
-    //                           title: const Text("Recipes Dialog!"),
-    //                           content: const Text(
-    //                             "Are you one to see more detial? Please press on picture to see detail. "
-    //                           ),
-    //                           actions: [
-    //                           new FlatButton(
-    //                             child: const Text("Close"),
-    //                             onPressed: () => Navigator.pop(context),
-    //                           ),
-    //                         ],
-    //                       ),
-    //                     );
-    //                   }
-    //                 ),
-    //               ),
-    //             ],
-    //           ),
-    //         ),
-    //         Container(
-    //           padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-    //           child: Text(
-    //             "Title",style: TextStyle(fontSize: 18),
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
-  }
-  Widget _widget(){
-    
-    return Container(
-      child: Image.asset(e['image']),
-    );
-  }
 }
-

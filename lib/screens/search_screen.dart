@@ -2,9 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
+import 'package:recipes/models/data.dart';
 import 'package:recipes/widgets/recipe_card.dart';
 
 class SearchScreen extends StatefulWidget {
+  final recipeItem;
+
+  const SearchScreen({Key key, this.recipeItem}) : super(key: key);
   @override
   _RecipesScreenState createState() => _RecipesScreenState();
 }
@@ -89,20 +93,14 @@ class _RecipesScreenState extends State<SearchScreen> {
   } 
   }
 
-  RecipesListCard _itemCardList() {
-    return RecipesListCard();
-  }
-
   Widget _itemList(){
-    List suggestionList= [
-      'a','b','c','d','c','d''a','b','c','d','c','d'
-    ];
+    // final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: suggestionList.length,
+        itemCount: recipes.length,
         itemBuilder: (BuildContext context, index) {
-          return _itemCardList();
+          return RecipesListCard(recipeItem: recipes[index],);
         }
       ),
     );
