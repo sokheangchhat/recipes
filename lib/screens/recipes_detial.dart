@@ -4,10 +4,17 @@ class RecipesDetial extends StatelessWidget {
   final Map<String, dynamic> recipeItem;
   RecipesDetial(this.recipeItem);
 
-  @override
+   @override
   Widget build(BuildContext context) {
-    List<Widget> listNutrition = List<Widget>();
-    listNutrition = buildList();
+    
+    // List<Widget> listNutrition = List<Widget>();
+    // listNutrition = buildListNutritions();
+
+    // List<Widget> listIngredients = List<Widget>();
+    // listIngredients = buildIngredients();
+
+    // List<Widget> listSteps = List<Widget>();
+    // listSteps = buildListSteps();
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 37, 52, 64),
@@ -100,21 +107,148 @@ class RecipesDetial extends StatelessWidget {
                       height: 10,
                     ),
                     Column(
-                      children: listNutrition,
+                      children: buildListNutritions(),
+                    ),
+                  
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Ingredients",
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                   
+                    Column(
+                      children: buildIngredients(),
                     ),
                   ],
                 ),
               ),
             ),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Steps",
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                   
+                    Column(
+                      children: buildListSteps(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            
           ],
         ),
       ),
     );
   }
-
-  List<Widget> buildList() {
+  List<Widget> buildListNutritions() {
     List<Widget> list = List<Widget>();
-    for (int i = 0; i < recipeItem['nutrition'].length; i++) {
+    
+    recipeItem['nutrition'].forEach((element) {
+      list.add(
+        Padding(
+          padding: const EdgeInsets.only(left:10),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                  child: Text(
+                    '-',
+                    // i.toString(),
+                    style: TextStyle(color: Colors.white,fontSize: 20),
+                  ),
+                ),
+              
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Text(
+
+                  element.toString(),
+                  style: TextStyle(
+                    color: Colors.white,fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    });
+    return list;
+  }
+
+  List<Widget> buildIngredients() {
+    List<Widget> list = List<Widget>();
+    
+    recipeItem['ingredients'].forEach((element) {
+      list.add(
+        Padding(
+          padding: const EdgeInsets.only(left:10),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Text(
+                  '-',
+                  // i.toString(),
+                  style: TextStyle(color: Colors.white,fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Text(
+                  element.toString(),
+                  style: TextStyle(
+                    color: Colors.white,fontSize: 16
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    });
+    return list;
+  }
+
+  List<Widget> buildListSteps() {
+    List<Widget> list = List<Widget>();
+    int i = 1;
+     
+    recipeItem['steps'].forEach((element) {
       list.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -137,9 +271,13 @@ class RecipesDetial extends StatelessWidget {
                     bottomRight: Radius.circular(20.0),
                   ),
                 ),
+                
                 child: Center(
+                  
                   child: Text(
-                    i.toString(),
+                    
+                    '$i',
+                    // i.toString(),
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
@@ -147,17 +285,20 @@ class RecipesDetial extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              Text(
-                recipeItem['nutrition'][i].toString(),
-                style: TextStyle(
-                  color: Colors.white,
+              Expanded(
+                child: Text(
+                  element.toString(),
+                  style: TextStyle(
+                    color: Colors.white,fontSize: 16
+                  ),
                 ),
               ),
             ],
           ),
         ),
       );
-    }
+    });
     return list;
   }
+
 }
