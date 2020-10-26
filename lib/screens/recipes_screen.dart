@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
@@ -8,18 +7,14 @@ import 'package:recipes/screens/notification_screen.dart';
 import 'package:recipes/widgets/recipe_card.dart';
 import 'search_screen.dart';
 
-
-
 class RecipesScreen extends StatefulWidget {
-
   @override
   _RecipesScreenState createState() => _RecipesScreenState();
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  
   RecipesViewBloc bloc = new RecipesViewBloc();
-
+  bool isGridView = true;
 
   @override
   void initState() {
@@ -34,21 +29,27 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(isGridView);
     return Scaffold(
       // backgroundColor: Color(0xFF2d4059),
-      backgroundColor: Color.fromARGB( 255,37, 52, 64),
+      backgroundColor: Color.fromARGB(255, 37, 52, 64),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB( 255,37, 52, 64),
+        backgroundColor: Color.fromARGB(255, 37, 52, 64),
         centerTitle: true,
-          title: Text('Recipes'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen(),),);
-                },
-              ),
-            ],
+        title: Text('Recipes'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SearchScreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -59,7 +60,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   icon: Icon(Icons.grid_on),
                   color: Colors.white,
                   onPressed: () {
-                    bloc.selectView("grid");
+                    //bloc.selectView("grid");
+                    setState(() {
+                      isGridView = true;
+                    });
                   },
                 ),
               ),
@@ -68,25 +72,30 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   icon: Icon(Icons.list),
                   color: Colors.white,
                   onPressed: () {
-                    bloc.selectView("list");
+                    // bloc.selectView("list");
+                    setState(() {
+                      isGridView = false;
+                    });
                   },
                 ),
               ),
             ],
           ),
-        
-          StreamBuilder<String>(
-            stream: bloc.recipesViewStream,
-            builder: (context, snapshot) {
-              final view = snapshot.data;
-              if(view == "list"){
-                return _itemList();
-              }
-              else {
-                return _itemGrid();
-              }
-            },
-          ),
+          Expanded(
+            child: isGridView ? _itemGrid() : _itemList(),
+          )
+
+          // StreamBuilder<String>(
+          //   stream: bloc.recipesViewStream,
+          //   builder: (context, snapshot) {
+          //     final view = snapshot.data;
+          //     if (view == "list") {
+          //       return _itemList();
+          //     } else {
+          //       return _itemGrid();
+          //     }
+          //   },
+          // ),
         ],
       ),
       drawer: Drawer(
@@ -104,7 +113,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       radius: 50.0,
-                      child: Icon(Icons.person,size: 100,),
+                      child: Icon(
+                        Icons.person,
+                        size: 100,
+                      ),
                     ),
                   ),
                   Align(
@@ -133,7 +145,12 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     leading: Icon(Icons.notifications),
                     title: Text('Notification'),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationScreen(),),);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationScreen(),
+                        ),
+                      );
                     },
                   ),
                 ),
@@ -142,7 +159,12 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     leading: Icon(Icons.save),
                     title: Text('Myrecipes'),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> MyRecipesScreen(),),);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyRecipesScreen(),
+                        ),
+                      );
                     },
                   ),
                 ),
@@ -155,7 +177,6 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     },
                   ),
                 ),
-                 
               ],
             ),
             Container(
@@ -177,31 +198,31 @@ class _RecipesScreenState extends State<RecipesScreen> {
       ),
     );
   }
-  
+
   Widget _itemGrid() {
-    return Expanded(
-      child: GridView.count(
-        padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: List.generate(recipes.length, (index) {
-          return RecipesGridCard(recipeItem: recipes[index],);
-        }),
-      ),
+    return GridView.count(
+      padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      crossAxisCount: 2,
+      children: List.generate(recipes.length, (index) {
+        return RecipesGridCard(
+          recipeItem: recipes[index],
+        );
+      }),
     );
   }
 
-  Widget _itemList(){
+  Widget _itemList() {
     // final List<String> item=<String> ['a','a','a','a'];
-    return Expanded (
-      child: ListView.builder(
+    return ListView.builder(
         padding: const EdgeInsets.all(10),
         itemCount: recipes.length,
         itemBuilder: (BuildContext context, index) {
-          return RecipesListCard(recipeItem: recipes[index],);
-        }
-      ),
-    );
+          // return Text(recipes[index]['title']);
+          return RecipesListCard(
+            recipeItem: recipes[index],
+          );
+        });
   }
 }
