@@ -1,6 +1,7 @@
 library recipes;
 
 List<Map<String, dynamic>> recipes = [
+  
   {
     "image": "themes/images/rice.jpg",
     "title": "Ricedfdferferferferfff",

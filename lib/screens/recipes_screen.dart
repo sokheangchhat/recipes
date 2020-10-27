@@ -14,7 +14,7 @@ class RecipesScreen extends StatefulWidget {
 
 class _RecipesScreenState extends State<RecipesScreen> {
   RecipesViewBloc bloc = new RecipesViewBloc();
-  bool isGridView = true;
+  // bool isGridView = true;
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(isGridView);
+    // print(isGridView);  
     return Scaffold(
       // backgroundColor: Color(0xFF2d4059),
       backgroundColor: Color.fromARGB(255, 37, 52, 64),
@@ -60,10 +60,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   icon: Icon(Icons.grid_on),
                   color: Colors.white,
                   onPressed: () {
-                    //bloc.selectView("grid");
-                    setState(() {
-                      isGridView = true;
-                    });
+                    bloc.selectView("grid");
+                    // setState(() {
+                    //   isGridView = true;
+                    // });
                   },
                 ),
               ),
@@ -72,30 +72,32 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   icon: Icon(Icons.list),
                   color: Colors.white,
                   onPressed: () {
-                    // bloc.selectView("list");
-                    setState(() {
-                      isGridView = false;
-                    });
+                    bloc.selectView("list");
+                    // setState(() {
+                    //   isGridView = false;
+                    // });
                   },
                 ),
               ),
             ],
           ),
           Expanded(
-            child: isGridView ? _itemGrid() : _itemList(),
-          )
+            // child: isGridView ? _itemGrid() : _itemList(),
 
-          // StreamBuilder<String>(
-          //   stream: bloc.recipesViewStream,
-          //   builder: (context, snapshot) {
-          //     final view = snapshot.data;
-          //     if (view == "list") {
-          //       return _itemList();
-          //     } else {
-          //       return _itemGrid();
-          //     }
-          //   },
-          // ),
+            child:StreamBuilder<String>(
+              stream: bloc.recipesViewStream,
+              builder: (context, snapshot) {
+                final view = snapshot.data;
+                if (view == "list") {
+                  debugPrint("itemList");
+                  return _itemList();
+                  
+                } else {
+                  return _itemGrid();
+                }
+              },
+            ),
+          ),
         ],
       ),
       drawer: Drawer(
@@ -214,15 +216,14 @@ class _RecipesScreenState extends State<RecipesScreen> {
   }
 
   Widget _itemList() {
-    // final List<String> item=<String> ['a','a','a','a'];
     return ListView.builder(
-        padding: const EdgeInsets.all(10),
-        itemCount: recipes.length,
-        itemBuilder: (BuildContext context, index) {
-          // return Text(recipes[index]['title']);
-          return RecipesListCard(
-            recipeItem: recipes[index],
-          );
-        });
+      padding: const EdgeInsets.all(10),
+      itemCount: recipes.length,
+      itemBuilder: (BuildContext context, index) {
+        // return Text(recipes[index]['title']);
+        return RecipesListCard(
+          recipeItem: recipes[index],
+        );
+      });
   }
 }

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:recipes/screens/myrecipes_screen.dart';
-import 'package:recipes/screens/recipes_screen.dart';
-
-// import 'screens/recipes_screen.dart';
+import 'screens/recipes_screen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
