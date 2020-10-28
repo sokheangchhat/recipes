@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/color_view_bloc.dart';
+import 'package:recipes/main.dart';
 
 
 
@@ -37,6 +38,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
+              
               Navigator.pop(context);
             }),
       ),
@@ -62,18 +64,29 @@ class _RecipesDetialState extends State<RecipesDetial> {
               padding: EdgeInsets.all(5),
               child: Row(
                 children: <Widget>[
+                  //  plan to creat count number on love icon.
                   StreamBuilder<bool>(
                     stream: bloc.colorViewStream,
                     builder: (context, snapshot) {
-                      debugPrint("$snapshot");
-
                       var color = snapshot.data;
 
-                      debugPrint("$color");
-
-                      return SizedBox();
-
-                      if (color) {
+                      if (color == null) {
+                        
+                        return IconButton(
+                          icon: Icon(
+                            Icons.favorite,
+                            
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                          
+                          onPressed: () {
+                            
+                            bloc.selectView(true);
+                          },
+                        );
+                      } else if(color !=false){
+                        // debugPrint("$color");
                         return IconButton(
                           icon: Icon(
                             Icons.favorite,
@@ -81,10 +94,11 @@ class _RecipesDetialState extends State<RecipesDetial> {
                             size: 24,
                           ),
                           onPressed: () {
+                            
                             bloc.selectView(false);
                           },
                         );
-                      } else {
+                      } else{
                         return IconButton(
                           icon: Icon(
                             Icons.favorite,
@@ -92,31 +106,36 @@ class _RecipesDetialState extends State<RecipesDetial> {
                             size: 24,
                           ),
                           onPressed: () {
+                            
                             bloc.selectView(true);
                           },
                         );
                       }
-                    },
+                    }
                   ),
                   
                   Text(
                     "Love",
                     style: TextStyle(color: Colors.white, fontSize: 17),
                   ),
-                  // SizedBox(width: 47,),
+                  
+                  //how to save data?
                   IconButton(
                     icon: Icon(
                       Icons.save,
                       color: Colors.white,
                       size: 24,
                     ),
-                    onPressed: () {},
+                    tooltip: "Save",
+                    
+                    onPressed: () {
+                       debugPrint("save");
+                    },
                   ),
                   Text(
                     "Save",
                     style: TextStyle(color: Colors.white, fontSize: 17),
                   ),
-                  // SizedBox(width: 47,),
                   IconButton(
                     icon: Icon(
                       Icons.share,
@@ -151,7 +170,6 @@ class _RecipesDetialState extends State<RecipesDetial> {
                     Column(
                       children: buildListNutritions(),
                     ),
-                  
                   ],
                 ),
               ),
