@@ -1,13 +1,11 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
-import 'package:recipes/models/food.dart';
+import 'package:recipes/models/data.dart';
+import 'package:recipes/screens/myrecipes_screen.dart';
+import 'package:recipes/screens/notification_screen.dart';
 import 'package:recipes/widgets/recipe_card.dart';
-
 import 'search_screen.dart';
-
-
 
 class RecipesScreen extends StatefulWidget {
   @override
@@ -16,7 +14,7 @@ class RecipesScreen extends StatefulWidget {
 
 class _RecipesScreenState extends State<RecipesScreen> {
   RecipesViewBloc bloc = new RecipesViewBloc();
-
+  // bool isGridView = true;
 
   @override
   void initState() {
@@ -31,21 +29,27 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // print(isGridView);  
     return Scaffold(
       // backgroundColor: Color(0xFF2d4059),
-      backgroundColor: Color.fromARGB( 255,37, 52, 64),
+      backgroundColor: Color.fromARGB(255, 37, 52, 64),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB( 255,37, 52, 64),
+        backgroundColor: Color.fromARGB(255, 37, 52, 64),
         centerTitle: true,
-          title: Text('Recipes'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen(),),);
-                },
-              ),
-            ],
+        title: Text('Recipes'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SearchScreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -57,6 +61,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   color: Colors.white,
                   onPressed: () {
                     bloc.selectView("grid");
+                    // setState(() {
+                    //   isGridView = true;
+                    // });
                   },
                 ),
               ),
@@ -66,29 +73,31 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   color: Colors.white,
                   onPressed: () {
                     bloc.selectView("list");
+                    // setState(() {
+                    //   isGridView = false;
+                    // });
                   },
                 ),
               ),
             ],
           ),
-        
-          StreamBuilder<String>(
-            stream: bloc.recipesViewStream,
-            builder: (context, snapshot) {
-              debugPrint("hello");
-              debugPrint("${snapshot.data}");
-              final view = snapshot.data;
-              if(view == "list"){
-                return _itemList();
-              }
-              else {
-                return _itemGrid();
-              }
-              
-            },
-            
+          Expanded(
+            // child: isGridView ? _itemGrid() : _itemList(),
+
+            child:StreamBuilder<String>(
+              stream: bloc.recipesViewStream,
+              builder: (context, snapshot) {
+                final view = snapshot.data;
+                if (view == "list") {
+                  debugPrint("itemList");
+                  return _itemList();
+                  
+                } else {
+                  return _itemGrid();
+                }
+              },
+            ),
           ),
-          
         ],
       ),
       drawer: Drawer(
@@ -106,6 +115,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       radius: 50.0,
+                      child: Icon(
+                        Icons.person,
+                        size: 100,
+                      ),
                     ),
                   ),
                   Align(
@@ -118,57 +131,63 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 ],
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.image),
-              title: Text('Image'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            Column(
+              children: <Widget>[
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.image),
+                    title: Text('Image'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.notifications),
+                    title: Text('Notification'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.save),
+                    title: Text('Myrecipes'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyRecipesScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Setting'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Setting'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Notification'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.save),
-              title: Text('Myrecipes'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            Expanded(
+            Container(
+              padding: EdgeInsets.only(top: 230),
               child: Align(
-                alignment: Alignment.topRight,
+                alignment: Alignment.bottomLeft,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ListTile(
-                      title: Text(''),
-                    ),
-                    //  ListTile(leading: Icon(Icons.settings),
-                    //   title: Text(''),
-                    //   onTap: () =>Navigator.pop(context),
-                    //  ),
-                    ListTile(
-                      title: Text(''),
-                    ),
-                    ListTile(
-                      title: Text(''),
-                    ),
-                    ListTile(
-                      title: Text(''),
-                    ),
-
                     ListTile(
                       title: Text('Version 1.0.0'),
                     ),
@@ -182,83 +201,29 @@ class _RecipesScreenState extends State<RecipesScreen> {
     );
   }
 
-  RecipesGridCard _itemCardGrid() {
-    return RecipesGridCard();
-  }
-  RecipesListCard _itemCardList() {
-    return RecipesListCard();
-  }
-
   Widget _itemGrid() {
-    return Expanded(
-      child: GridView.count(
-        padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: List.generate(100, (index) {
-          // return _alertDialog(context, index);
-          return _itemCardGrid();
-        }),
-      ),
+    return GridView.count(
+      padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      crossAxisCount: 2,
+      children: List.generate(recipes.length, (index) {
+        return RecipesGridCard(
+          recipeItem: recipes[index],
+        );
+      }),
     );
   }
 
-  Widget _itemList(){
-    final List<String> sol=<String> ['a','a','a','a'];
-    return Expanded (
-      child: ListView.builder(
-        padding: const EdgeInsets.all(10),
-        itemCount: sol.length,
-        itemBuilder: (BuildContext context, index) {
-          return _itemCardList();
-        }
-      ),
-    );
+  Widget _itemList() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(10),
+      itemCount: recipes.length,
+      itemBuilder: (BuildContext context, index) {
+        // return Text(recipes[index]['title']);
+        return RecipesListCard(
+          recipeItem: recipes[index],
+        );
+      });
   }
 }
-
-
-
-  
-  
-
-
-
-
-// class RecipesItemSearch extends SearchDelegate<ListView> {
-//   @override
-//   List<Widget> buildActions(BuildContext context) {
-//       return [IconButton(
-//         icon: Icon(Icons.clear), 
-//         onPressed: (){})];
-//     }
-  
-//     @override
-//     Widget buildLeading(BuildContext context) {
-//       return IconButton(
-//         icon: Icon(Icons.arrow_back), 
-//         onPressed: (){ 
-//         });
-//     }
-  
-//     @override
-//     Widget buildResults(BuildContext context) {
-
-//       throw UnimplementedError();
-//     }
-    
-//     @override
-//     Widget buildSuggestions(BuildContext context) {
-//       final lst = loadRecipeItem();
-//       return ListView.builder(
-//         itemCount: ['a','b','c'].length,
-//         itemBuilder: (context,index){
-//           final Food listitem = lst[index];
-//           return ListTile(
-//             title: Text(listitem.title),);
-//         },
-//       );
-//   }
-
-// }

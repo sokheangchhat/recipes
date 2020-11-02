@@ -1,28 +1,30 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
+import 'package:recipes/models/data.dart';
 import 'package:recipes/widgets/recipe_card.dart';
-// import 'package:recipes/models/food.dart';
 
 class SearchScreen extends StatefulWidget {
+  final recipeItem;
+
+  const SearchScreen({Key key, this.recipeItem}) : super(key: key);
   @override
   _RecipesScreenState createState() => _RecipesScreenState();
 }
 
 class _RecipesScreenState extends State<SearchScreen> {
   RecipesViewBloc bloc = new RecipesViewBloc();
+
   @override
   void initState() {
     super.initState();
-
   }
-
   @override
   void dispose() {
     super.dispose();
     bloc.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,61 +34,76 @@ class _RecipesScreenState extends State<SearchScreen> {
         centerTitle: true,
           title: Text('Search recipes'),
       ),
+      
       body: Column(
+        
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              Row (
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left:40),
-                    child: SizedBox(
-                      width: 290,
-                      height: 50,
-                      child:TextField(
+          Container(
+            padding: const EdgeInsets.only(left: 25.0, right: 25.0, bottom: 20.0,top: 35.0),
+              child: Container(
+                padding: const EdgeInsets.only(left: 20.0, right: 5.0, bottom: 5.0,top: 5.0),
+                // padding: EdgeInsets.all(3),
+                // padding: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0,top: 5),
+                 
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(40.0),),
+                                    
+                    color: Colors.white,
+                ),
+                
+                child: Row(
+                  
+                  
+                  children: <Widget>[
+                    Flexible(
+                     
+                      child: TextField(
+                        scrollPadding: EdgeInsets.all(20),
                         decoration: InputDecoration(
-                          // border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(left: 20),
+                          border: InputBorder.none,
                           // labelText: "Search recipes",
-                          hintText: "Search",fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.search,color: Colors.white,),
-                          // contentPadding:  EdgeInsets.only(
-                          // left: 20.0, bottom: 8.0, top: 8.0),
-                          border: OutlineInputBorder(
-                          borderSide: new BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.all(Radius.circular(25.0),),),),
+                          hintText: "Search",
                         ),
                       ),
                     ),
-                
-                ],
+                    SizedBox(width: 15,),
+                    Container(
+                      decoration: BoxDecoration(
+
+                        borderRadius: BorderRadius.all(Radius.circular(40),),
+                        color: Colors.green,
+                      ),
+                      
+                      
+                      child: IconButton(icon: Icon(Icons.search),
+                        onPressed: (){},
+                      ),
+                    ),
+                   
+                  ],
+                ),
               ),
-            ],
             
           ),
-           _itemList(),
+              _itemList(),
         ],
-      ),
-      
+      ),    
     );   
   } 
-
-  RecipesListCard _itemCardList() {
-    return RecipesListCard();
   }
+
   Widget _itemList(){
+    // final List<String> item=<String> ['a','a','a','a'];
     return Expanded (
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: ['a','b','c','a','a','b','c' ].length,
+        itemCount: recipes.length,
         itemBuilder: (BuildContext context, index) {
-          return _itemCardList();
+          return RecipesListCard(recipeItem: recipes[index],);
         }
       ),
     );
   }
-  
-
-}
-
 
 

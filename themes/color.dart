@@ -9,8 +9,9 @@ class ThemeColor {
  
   static const MaterialColor blueGrey = Colors.blueGrey;
   
-  static const MaterialColor text = Colors.red;
+  static const Color text = Colors.white;
   static const Color colorLightPrimary =Color(0xFF30475e);
+  static const Color color_red = Colors.red;
 
 }
 //  const kTextColor = Color(0xFF535353);
