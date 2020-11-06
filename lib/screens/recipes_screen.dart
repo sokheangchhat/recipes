@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/recipes_view_bloc.dart';
+import 'package:recipes/color/color.dart';
 import 'package:recipes/models/data.dart';
 import 'package:recipes/screens/myrecipes_screen.dart';
 import 'package:recipes/screens/notification_screen.dart';
@@ -8,6 +9,7 @@ import 'package:recipes/widgets/recipe_card.dart';
 import 'search_screen.dart';
 
 class RecipesScreen extends StatefulWidget {
+  
   @override
   _RecipesScreenState createState() => _RecipesScreenState();
 }
@@ -31,10 +33,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
   Widget build(BuildContext context) {
     // print(isGridView);  
     return Scaffold(
-      // backgroundColor: Color(0xFF2d4059),
-      backgroundColor: Color.fromARGB(255, 37, 52, 64),
+      
+      backgroundColor: Color(0xFF253440),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 37, 52, 64),
+        backgroundColor: Color(0xFF253440),
         centerTitle: true,
         title: Text('Recipes'),
         actions: <Widget>[
@@ -58,7 +60,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
               Container(
                 child: IconButton(
                   icon: Icon(Icons.grid_on),
-                  color: Colors.white,
+                  color: AppColors.white,
                   onPressed: () {
                     bloc.selectView("grid");
                     // setState(() {
@@ -89,7 +91,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
               builder: (context, snapshot) {
                 final view = snapshot.data;
                 if (view == "list") {
-                  debugPrint("itemList");
+                  // debugPrint("itemList");
                   return _itemList();
                   
                 } else {

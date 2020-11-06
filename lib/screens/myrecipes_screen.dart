@@ -4,7 +4,14 @@ import 'package:recipes/bloc/recipes_view_bloc.dart';
 import 'package:recipes/models/data.dart';
 import 'package:recipes/widgets/body_myreicipes.dart';
 
+import '../models/data.dart';
+
 class MyRecipesScreen extends StatefulWidget {
+  final recipeItem;
+  final save;
+
+  const MyRecipesScreen({Key key, this.recipeItem, this.save}) : super(key: key);
+
   @override
   _MyRecipesScreenState createState() => _MyRecipesScreenState();
 }
@@ -22,6 +29,8 @@ class _MyRecipesScreenState extends State<MyRecipesScreen> {
     super.dispose();
     bloc.dispose();
   }
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +51,20 @@ class _MyRecipesScreenState extends State<MyRecipesScreen> {
 }
 
 Widget _myRecipesScreen() {
+  
   return Expanded(
     child: ListView.builder(
+
         padding: const EdgeInsets.all(10),
         itemCount: recipes.length,
         itemBuilder: (BuildContext context, index) {
-          return BodyMyRecipes(
+          var save;
+          if (save == recipes) {
+            return BodyMyRecipes(
             recipeItem: recipes[index],
           );
-        }),
+          }
+        }
+        ),
   );
 }
