@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/color_view_bloc.dart';
+import 'package:recipes/color/color.dart';
 // import 'package:recipes/main.dart';
 
 
@@ -31,9 +32,9 @@ class _RecipesDetialState extends State<RecipesDetial> {
   Widget build(BuildContext context) {
     // Color _favIconColor = Colors.red;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 37, 52, 64),
+      backgroundColor: Color(0xFF253440),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 37, 52, 64),
+        backgroundColor: Color(0xFF253440),
         centerTitle: true,
         title: Text('Recipes Detial'),
         leading: IconButton(
@@ -91,7 +92,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                         return IconButton(
                           icon: Icon(
                             Icons.favorite,
-                            color: Colors.red,
+                            color: AppColors.red,
                             size: 24,
                           ),
                           onPressed: () {
@@ -103,7 +104,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                         return IconButton(
                           icon: Icon(
                             Icons.favorite,
-                            color: Colors.white,
+                            color: AppColors.white,
                             size: 24,
                           ),
                           onPressed: () {
@@ -125,7 +126,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
                   IconButton(
                     icon: Icon(
                       Icons.save,
-                      color: Colors.white,
+                      color: AppColors.white,
                       size: 24,
                     ),
                     onPressed: () { },

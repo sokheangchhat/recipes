@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/controller/my_recipe_controller.dart';
 // import 'package:recipes/bloc/recipes_view_bloc.dart';
 import 'package:recipes/screens/recipes_detial.dart';
+import 'package:toast/toast.dart';
 
 class BodyMyRecipes extends StatelessWidget {
-  final recipeItem;
+  final Map<String ,dynamic> recipeItem;
+  final callBackRefresh;
 
-  const BodyMyRecipes({Key key, this.recipeItem}) : super(key: key);
+  BodyMyRecipes({Key key, this.recipeItem,this.callBackRefresh});
+
+  final MyRecipeController _myRecipeController = MyRecipeController();
+  void deleteMyRecipe(BuildContext context ) async {
+    await _myRecipeController.deleteData(recipeItem['id']);
+    Toast.show(recipeItem['title'] +"has been deleted.", context, duration: Toast.LENGTH_SHORT,gravity: Toast.BOTTOM);
+    callBackRefresh();
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
