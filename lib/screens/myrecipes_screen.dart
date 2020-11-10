@@ -74,7 +74,8 @@ class _MyRecipesScreenState extends State<MyRecipesScreen> {
         centerTitle: true,
         title: Text('My Recipes'),
       ),
-      body: ListView.builder(
+      body: Scaffold(
+        body:ListView.builder(
           padding: const EdgeInsets.all(10),
           itemCount: recipeItems.length,
           itemBuilder: (BuildContext context, index) {
@@ -83,6 +84,8 @@ class _MyRecipesScreenState extends State<MyRecipesScreen> {
               callBackRefresh: refreshScreen,
             );
           }),
+      ),
+      
     );
   }
 }
