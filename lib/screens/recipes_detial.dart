@@ -1,11 +1,11 @@
 
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:recipes/bloc/color_view_bloc.dart';
 import 'package:recipes/color/color.dart';
+import 'package:recipes/controller/my_recipe_controller.dart';
+import 'package:toast/toast.dart';
 // import 'package:recipes/main.dart';
-
-
-
 
 class RecipesDetial extends StatefulWidget {
   final Map<String, dynamic> recipeItem; 
@@ -15,6 +15,8 @@ class RecipesDetial extends StatefulWidget {
 }
 
 class _RecipesDetialState extends State<RecipesDetial> {
+  final MyRecipeController _myRecipeController = MyRecipeController();
+  
   LikeViewBloc bloc = new LikeViewBloc();
   // bool isGridView = true;
 
@@ -28,6 +30,19 @@ class _RecipesDetialState extends State<RecipesDetial> {
     super.dispose();
     bloc.dispose();
   }
+  
+  Future<void> saveRecipe(Map<String, dynamic> recipeItem) async {
+    final Map<String, dynamic> myRecipeItem = {
+      "title": recipeItem['title'],
+      "image": recipeItem['image'],
+      "nutrition": json.encode(recipeItem['nutrition']),
+      "ingredients": json.encode(recipeItem['ingredients']),
+      "steps": json.encode(recipeItem['steps'])
+    };
+    await _myRecipeController.inserData(myRecipeItem);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     // Color _favIconColor = Colors.red;
@@ -38,11 +53,10 @@ class _RecipesDetialState extends State<RecipesDetial> {
         centerTitle: true,
         title: Text('Recipes Detial'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              
-              Navigator.pop(context);
-            }),
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          }),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -115,27 +129,31 @@ class _RecipesDetialState extends State<RecipesDetial> {
                       }
                     }
                   ),
-                  
                   Text(
                     "Love",
                     style: TextStyle(color: Colors.white, fontSize: 17),
                   ),
-                  
-                  
-                  //how to save data?
                   IconButton(
                     icon: Icon(
                       Icons.save,
-                      color: AppColors.white,
+                      color: Colors.white,
                       size: 24,
                     ),
-                    onPressed: () { },
+                    tooltip: "Save",
+                    onPressed: () {
+                      saveRecipe(widget.recipeItem).then((value) {
+                        Toast.show(
+                          widget.recipeItem['title'] + " has been saved.",
+                          context,
+                          duration: Toast.LENGTH_SHORT,
+                          gravity: Toast.BOTTOM);
+                      });
+                    },
                   ),
                   Text(
                     "Save",
                     style: TextStyle(color: Colors.white, fontSize: 17),
                   ),
-                  
                   IconButton(
                     icon: Icon(
                       Icons.share,
@@ -151,7 +169,6 @@ class _RecipesDetialState extends State<RecipesDetial> {
                 ],
               ),
             ),
-            
             Container(
               padding: EdgeInsets.only(left: 10),
               child: Container(
@@ -227,7 +244,9 @@ class _RecipesDetialState extends State<RecipesDetial> {
       ),
     );
   }
+
   List<Widget> buildListNutritions() {
+
     List<Widget> list = List<Widget>();
     
     widget.recipeItem['nutrition'].forEach((element) {
@@ -268,6 +287,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
   }
 
   List<Widget> buildIngredients() {
+
     List<Widget> list = List<Widget>();
     
     widget.recipeItem['ingredients'].forEach((element) {
@@ -306,6 +326,7 @@ class _RecipesDetialState extends State<RecipesDetial> {
   }
 
   List<Widget> buildListSteps() {
+
     List<Widget> list = List<Widget>();
     int i = 1;
     

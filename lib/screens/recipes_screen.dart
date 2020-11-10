@@ -161,7 +161,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 Container(
                   child: ListTile(
                     leading: Icon(Icons.save),
-                    title: Text('Myrecipes'),
+                    title: Text('My Recipes'),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -222,10 +222,10 @@ class _RecipesScreenState extends State<RecipesScreen> {
       padding: const EdgeInsets.all(10),
       itemCount: recipes.length,
       itemBuilder: (BuildContext context, index) {
-        // return Text(recipes[index]['title']);
         return RecipesListCard(
           recipeItem: recipes[index],
         );
-      });
+      }
+    );
   }
 }

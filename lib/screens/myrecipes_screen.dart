@@ -12,7 +12,7 @@ class MyRecipesScreen extends StatefulWidget {
   final recipeItem;
   final save;
 
-  const MyRecipesScreen({Key key, this.recipeItem, this.save}) : super(key: key);
+  MyRecipesScreen({Key key, this.recipeItem, this.save}) : super(key: key);
 
   @override
   _MyRecipesScreenState createState() => _MyRecipesScreenState();

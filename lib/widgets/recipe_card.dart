@@ -1,16 +1,34 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recipes/models/data.dart';
-
+import 'package:recipes/controller/my_recipe_controller.dart';
 import 'package:recipes/screens/recipes_detial.dart';
+import 'package:toast/toast.dart';
 
 class RecipesListCard extends StatelessWidget {
   final Map<String, dynamic> recipeItem;
 
-  const RecipesListCard({
+  RecipesListCard({
     Key key,
     this.recipeItem,
   }) : super(key: key);
+
+  final MyRecipeController _myRecipeController = MyRecipeController();
+
+  void saveRecipe(BuildContext context) async{
+    final Map<String, dynamic> myRecipeItem = {
+      "title": recipeItem['title'],
+      "image": recipeItem['image'],
+      "nutrition": json.encode(recipeItem['nutrition']),
+      "ingredients": json.encode(recipeItem['ingredients']),
+      "steps": json.encode(recipeItem['steps'])
+    };
+    await _myRecipeController.inserData(myRecipeItem);
+    Toast.show(recipeItem['title']+ "has been saved.", context,
+      duration: Toast.LENGTH_SHORT,gravity: Toast.BOTTOM,
+    );
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,32 +78,35 @@ class RecipesListCard extends StatelessWidget {
                 ),
               ),
             ),
+            
             Container(
               decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.grey, borderRadius: BorderRadius.circular(10)
+              ),
               padding: EdgeInsets.all(1),
               child: IconButton(
-                  icon: Icon(
-                    Icons.description,
-                    color: Colors.white,
-                  ),
-                  iconSize: 30,
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      child: AlertDialog(
-                        title: Text("Recipes Dialog!"),
-                        content: Text(
-                            "Are you one to see more detial? Please press on picture to see detail. "),
-                        actions: [
-                          FlatButton(
-                            child: Text("Close"),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
+                icon: Icon(
+                  Icons.description,
+                  color: Colors.white,
+                ),
+                iconSize: 30,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    child: AlertDialog(
+                      title: Text("Recipes Dialog!"),
+                      content: Text(
+                          "Are you one to see more detial? Please press on picture to see detail. "),
+                      actions: [
+                        FlatButton(
+                          child: Text("Close"),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              ),
             ),
           ],
         ),
@@ -97,10 +118,28 @@ class RecipesListCard extends StatelessWidget {
 class RecipesGridCard extends StatelessWidget {
   final recipeItem; //property
 
-  const RecipesGridCard({
+  RecipesGridCard({
     Key key,
     this.recipeItem,
   }) : super(key: key);
+
+  final MyRecipeController _myRecipeController = MyRecipeController();
+
+  void saveRecipe(BuildContext context) async {
+    final Map<String , dynamic> myRecipeItem = {
+      "title": recipeItem['title'],
+      "image": recipeItem['image'],
+      "nutrition": json.encode(recipeItem['nutrition']),
+      "ingredients": json.encode(recipeItem['ingredients']),
+      "steps": json.encode(recipeItem['steps'])
+    };
+    await _myRecipeController.inserData(myRecipeItem);
+    Toast.show(recipeItem["title"]+ "has been saved.", context,
+      duration: Toast.LENGTH_SHORT,gravity: Toast.BOTTOM);
+
+    Navigator.pop(context);
+
+  }
 
   @override
   Widget build(BuildContext context) {

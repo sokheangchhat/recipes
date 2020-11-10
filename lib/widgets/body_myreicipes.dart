@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/controller/my_recipe_controller.dart';
-// import 'package:recipes/bloc/recipes_view_bloc.dart';
 import 'package:recipes/screens/recipes_detial.dart';
 import 'package:toast/toast.dart';
 
@@ -13,7 +12,10 @@ class BodyMyRecipes extends StatelessWidget {
   final MyRecipeController _myRecipeController = MyRecipeController();
   void deleteMyRecipe(BuildContext context ) async {
     await _myRecipeController.deleteData(recipeItem['id']);
-    Toast.show(recipeItem['title'] +"has been deleted.", context, duration: Toast.LENGTH_SHORT,gravity: Toast.BOTTOM);
+    Toast.show(
+      recipeItem['title'] +"has been deleted.", 
+      context, duration: Toast.LENGTH_SHORT,
+      gravity: Toast.BOTTOM);
     callBackRefresh();
     Navigator.pop(context);
   }
@@ -36,34 +38,23 @@ class BodyMyRecipes extends StatelessWidget {
         color: Colors.green,
         child: Row(
           children: <Widget>[
-            Flexible(
-              child: Stack(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      width: 150,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          // topRight: Radius.circular(0.0),
-                          topLeft: Radius.circular(10.0),
-                          bottomLeft: Radius.circular(10.0),
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage("${recipeItem['image']}"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+            Container(
+              width: 150,
+              height: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.0),
+                  bottomLeft: Radius.circular(10.0),
+                ),
+                image: DecorationImage(
+                  image: AssetImage("${recipeItem['image']}"),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            Flexible(
-              flex: 1,
+            Expanded(
               child: Container(
-                padding:
-                    EdgeInsets.only(left: 5.0, right: 5.0, bottom: 2, top: 2),
+                padding: EdgeInsets.only(left: 10.0, right: 5.0),
                 child: Text(
                   "${recipeItem['title']}",
                   overflow: TextOverflow.ellipsis,
@@ -79,33 +70,33 @@ class BodyMyRecipes extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-              // padding: EdgeInsets.only(left:10,right:5,top: 10, ),
-              child: Positioned(
-                // top: 1,
-                // right: 1,
-
-                child: IconButton(
-                    icon: Icon(
-                      Icons.description,
-                      color: Colors.white,
-                    ),
-                    iconSize: 30,
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        child: new AlertDialog(
-                          title: const Text("Recipes Dialog!"),
-                          content: const Text(
-                              "Are you one to see more detial? Please press on picture to see detail. "),
-                          actions: [
-                            new FlatButton(
-                              child: const Text("Close"),
-                              onPressed: () => Navigator.pop(context),
-                            ),
-                          ],
+              padding: EdgeInsets.all(1),
+              child: IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ),
+                iconSize: 30,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    child: AlertDialog(
+                      title: Text("Recipes Deleting!"),
+                      content: Text(
+                          "Are you sure you want to delete this recipe?"),
+                      actions: [
+                        FlatButton(
+                          child: Text("No"),
+                          onPressed: () => Navigator.pop(context),
                         ),
-                      );
-                    }),
+                        FlatButton(
+                          child: Text("Yes"),
+                          onPressed: () => deleteMyRecipe(context),
+                        ),
+                      ],
+                    ),
+                  );
+                }
               ),
             ),
           ],
