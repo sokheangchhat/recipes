@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recipes/color/color.dart';
 import 'package:recipes/controller/my_recipe_controller.dart';
 import 'package:recipes/screens/recipes_detial.dart';
 import 'package:toast/toast.dart';
@@ -81,7 +82,7 @@ class RecipesListCard extends StatelessWidget {
             
             Container(
               decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(10)
+                borderRadius: BorderRadius.circular(10)
               ),
               padding: EdgeInsets.all(1),
               child: IconButton(
@@ -89,7 +90,7 @@ class RecipesListCard extends StatelessWidget {
                   Icons.description,
                   color: Colors.white,
                 ),
-                iconSize: 30,
+                iconSize: 35,
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -180,30 +181,30 @@ class RecipesGridCard extends StatelessWidget {
                   //this is a block of image that call from recipes_screen
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: IconButton(
+                        // color: Colors.lightGreen,
+                      borderRadius: BorderRadius.circular(10)),
+                      child: IconButton(
                         icon: Icon(
                           Icons.description,
-                          color: Colors.white,
+                          color: AppColors.white,
                         ),
-                        iconSize: 30,
+                        iconSize: 35,
                         onPressed: () {
                           showDialog(
                             context: context,
                             child: new AlertDialog(
                               title: const Text("Recipes Dialog!"),
-                              content: const Text(
-                                  "Are you one to see more detial? Please press on picture to see detail. "),
+                              content: 
+                                Text("Are you one to see more detial? Please press on picture to see detail. "),
                               actions: [
                                 new FlatButton(
                                   child: const Text("Close"),
-                                  onPressed: () => Navigator.pop(context),
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
                   ),
                 ],
               ),

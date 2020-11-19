@@ -73,8 +73,9 @@ class BodyMyRecipes extends StatelessWidget {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration( 
+                borderRadius: BorderRadius.circular(10)
+              ),
               padding: EdgeInsets.all(1),
               child: IconButton(
                 icon: Icon(
@@ -88,7 +89,7 @@ class BodyMyRecipes extends StatelessWidget {
                     child: AlertDialog(
                       title: Text("Recipes Deleting!"),
                       content: Text(
-                          "Are you sure you want to delete this recipe?"),
+                        "Are you sure you want to delete this recipe?"),
                       actions: [
                         FlatButton(
                           child: Text("No"),

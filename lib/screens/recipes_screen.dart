@@ -236,33 +236,33 @@ class _RecipesScreenState extends State<RecipesScreen> {
     );
   }
 
-  // void _initFirebaseMessaging(){
-  //   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  //   _firebaseMessaging.configure(
-  //     onMessage: (Map<String, dynamic> message) async {
-  //       print("onMessage: $message");
+  void _initFirebaseMessaging(){
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
 
-  //     },
-  //     onLaunch: (Map<String, dynamic> message) async {
-  //       print("onLaunch: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
 
-  //     },
-  //     onResume: (Map<String, dynamic> message) async {
-  //       print("onResume: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
 
-  //     },
-  //   );
-  //   _firebaseMessaging.requestNotificationPermissions(
-  //       const IosNotificationSettings(
-  //           sound: true, badge: true, alert: true, provisional: true));
-  //   _firebaseMessaging.onIosSettingsRegistered
-  //       .listen((IosNotificationSettings settings) {
-  //     print("Settings registered: $settings");
-  //   });
-  //   _firebaseMessaging.getToken().then((String token) {
-  //     assert(token != null);
+      },
+    );
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(
+            sound: true, badge: true, alert: true, provisional: true));
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+    _firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
 
-  //     print(token);
-  //   });
-  // }
+      print(token);
+    });
+  }
 }

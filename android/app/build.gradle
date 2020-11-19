@@ -12,6 +12,10 @@ buildscript {
 
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
+repositories {// add 19
+    maven{url 'http://maven.google.com'}
+}
+
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
