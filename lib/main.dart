@@ -5,11 +5,11 @@ import 'screens/recipes_screen.dart';
 
 void main() {
   runApp(MyApp() );
-  initOneSignal();
-  openNotification();
-  setPermissionObserver();
-  setSubscriptionObserver();
-  setEmailSubscriptionObserver();
+  // initOneSignal();
+  // openNotification();
+  // setPermissionObserver();
+  // setSubscriptionObserver();
+  // setEmailSubscriptionObserver();
   OneSignal.shared.setNotificationReceivedHandler(_handleNotificationReceived);
 } 
 
